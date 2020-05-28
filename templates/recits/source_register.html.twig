@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Enregistrer une source {% endblock %}
+
+{% block body %}
+
+    {{ form_start(sourceForm) }}
+    {{ form_row(sourceForm.title) }}
+    {{ form_row(sourceForm.adress) }}
+    <input type="submit" value="Poster">
+    {{ form_end(sourceForm) }}
+
+    {% for message in app.session.flashBag.get('source') %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+{% endblock %}

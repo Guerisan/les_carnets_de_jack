@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Vos récits {% endblock %}
+
+{% block stylesheets %} {{ parent() }} {% endblock %}
+
+{% block body %}
+
+    <p>Une histoire à partager ? <a href="{{ path('contribution_creation') }}">Envoyez-moi le récit de vos aventures !</a></p>
+
+    <h1>Parcourez les récits et anecdotes <br> d'aventuriers de tous bords :</h1>
+    <ul>
+        {% for contribution in contributions %}
+            {% if contribution.status is same as("published") %}
+                <li><a href="{{ path('contribution_single', {'id' : contribution.id}) }}">{{ contribution.title }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <p>Récits en attente : </p>
+        <ul>
+            {% for contribution in contributions %}
+                {% if contribution.status is not same as("published") %}
+                <li><a href="{{ path('contribution_single', {'id' : contribution.id}) }}">{{ contribution.title }}</a><br>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% for message in app.session.flashBag.get('contribution') %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} {{ recit.title }} {% endblock %}
+
+{% block body %}
+
+    <section>
+        {% include 'recits/' ~ recit.vue ~ '.html.twig' %}
+    </section>
+
+    <section>
+
+        <p>Sources : </p>
+        <ul>
+            {% for source in sources %}
+                <li><a href="{{ source.adress }}" target="_blank">{{ source.title }}</a></li>
+            {% endfor %}
+        </ul>
+
+
+        <p>Commentaires :</p>
+
+        {% for comment in comments %}
+            <p>{{ comment.author }} : {{ comment.text }}</p>
+        {% endfor %}
+
+        {{ form_start(commentForm) }}
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") or is_granted("IS_AUTHENTICATED_FULLY") %}
+            {{ form_label(commentForm.text, app.user.username) }}
+        {% else %}
+            {{ form_label(commentForm.text, 'Anonyme') }}
+        {% endif %}
+        {{ form_widget(commentForm.text) }}
+
+        <input type="submit" value="Poster">
+        {{ form_end(commentForm) }}
+
+    </section>
+
+{% endblock %}

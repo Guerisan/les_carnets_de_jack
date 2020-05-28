@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Nouvelle entrée du journal {% endblock %}
+
+{% block bodyClass %}new_entry{% endblock %}
+
+{% block body %}
+    <h1>Journal de bord : nouvelle entrée.</h1>
+
+    <div class="container">
+        {% for message in app.session.flashBag.get('journal') %}
+            <p>{{ message }}</p>
+        {% endfor %}
+
+        {{ form_start(Form) }}
+        {{ form_row(Form.title) }}
+        {{ form_row(Form.date) }}
+        {{ form_row(Form.content) }}
+        {{ form_row(Form.tags) }}
+        {{ form_row(Form.illustration) }}
+        <input type="submit" value="Envoyer">
+        {{ form_end(Form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset("tinymce/tinymce.min.js") }}"></script>
+    {{ parent() }}
+{% endblock %}

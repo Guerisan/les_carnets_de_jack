@@ -1,0 +1,71 @@
+.user_form, #commentaires {
+  h1 {
+    margin-bottom: 1em;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Raleway, sans-serif;
+    font-weight: normal;
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 3em;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  li {
+    color: red;
+  }
+
+
+  input, textarea {
+    margin-bottom: 2em;
+    min-width: 20em;
+    line-height: 2;
+    border: 1px solid $darkRed;
+    padding: .2em .5em;
+    font-family: "Raleway", sans-serif;
+  }
+
+
+  .invitation {
+    text-align: center;
+    margin-bottom: 3em;
+  }
+}
+
+.contact_form{
+  margin-top: 2em;
+  max-width: 50rem;
+  input[type='submit']{
+    min-width: initial;
+  }
+  textarea{
+    width: 100%;
+    height: 20rem;
+  }
+}
+
+button, input[type='submit'] {
+  font-family: Raleway, sans-serif;
+  font-weight: normal;
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 0 .7em;
+  background-color: $darkInk;
+  transition: $standardTransition;
+
+  &:hover {
+    background-color: #3d546f;
+  }
+}

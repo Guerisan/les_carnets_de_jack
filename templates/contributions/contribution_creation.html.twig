@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Partagez vos récits {% endblock %}
+
+{% block body %}
+
+    <h1>Racontez-moi vos meilleures aventures !</h1>
+    <p class="subline">Peut-être qu'elles trouveront leur place sur ce site !</p>
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') or is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p>Auteur : {{ app.user.username }}</p>
+    {% else %}
+        <p>Auteur : Anonyme <br>
+            <a href="{{ path('app_login') }}">S'identifier</a></p>
+    {% endif %}
+
+    {{ form_start(contForm) }}
+    {{ form_row(contForm.title) }}
+    {{ form_row(contForm.content) }}
+
+    <p>Vous pouvez rajouter une image à mettre en avant, et jusqu'à trois autres images pour la gallerie :</p>
+    {{ form_row(contForm.main_image) }}
+    {{ form_row(contForm.image_gallery_1) }}
+    {{ form_row(contForm.image_gallery_2) }}
+    {{ form_row(contForm.image_gallery_3) }}
+
+    <input type="submit" value="Envoyer">
+    {{ form_end(contForm) }}
+
+    {% for message in app.session.flashBag.get('contribution') %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset("tinymce/tinymce.min.js") }}"></script>
+    {{ parent() }}
+{% endblock %}
