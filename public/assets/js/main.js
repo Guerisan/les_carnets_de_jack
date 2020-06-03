@@ -233,6 +233,11 @@ if (mce[0]) {
     tinymce.init({
         selector: '.tinymce',
         plugins: "image link",
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
     });
 }
 

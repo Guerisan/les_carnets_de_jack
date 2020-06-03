@@ -103,7 +103,7 @@ class JournalController extends AbstractController
 
             $this->addFlash("journal", "Article posté !");
 
-            return $this->redirect($request->getUri());
+            return $this->redirectToRoute("journal_index");
 
         }
 

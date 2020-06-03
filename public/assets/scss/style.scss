@@ -141,11 +141,10 @@ em {
     overflow: hidden;
   }
 
-  &:after {
-    content: "";
+  .blacksail {
     height: 1000px;
     width: 200vw;
-    position: absolute;
+    position: fixed;
     bottom: 75%;
     background: #1a1a1a;
     transform: translateX(calc(100% + 130px)) rotate(20deg);
@@ -154,16 +153,16 @@ em {
 
   //TODO: le background clignote lors de l'animation sur fox
 
-  &:before {
-    content: "";
+  .nav_illustration {
     height: 100%;
     width: 45%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
     transition: $menuDuration ease-in-out;
-    transform: translateY(50%) translateX(500%);
+    transform: translateY(100%) translateX(500%);
     overflow: hidden;
+    backface-visibility: hidden;
     background: url("../img/nav_ibiza.jpg") no-repeat center;
     background-size: cover;
     clip-path: polygon(41% 0, 100% 0, 100% 100%, 0% 100%);
@@ -182,37 +181,12 @@ em {
   transform: translateY(0);
   opacity: 1;
 
-  ul {
-    a:nth-child(1) {
-      animation: delayedFadeIn .6s ease-in-out;
-    }
-
-    a:nth-child(2) {
-      animation: delayedFadeIn 1s .4s ease-in-out;
-    }
-
-    a:nth-child(3) {
-      animation: delayedFadeIn 1s .6s ease-in-out;
-    }
-
-    a:nth-child(4) {
-      animation: delayedFadeIn 1s .8s ease-in-out;
-    }
-
-    a:nth-child(5) {
-      animation: delayedFadeIn 1s 1s ease-in-out;
-    }
-
-    a:nth-child(6) {
-      animation: delayedFadeIn 1s 1.2s ease-in-out;
-    }
-  }
-
-  &:after {
+  .blacksail {
     transform: translateX(0%) rotate(20deg);
   }
 
-  &:before {
+  .nav_illustration {
+    transition-delay: .06s;
     transform: translateX(0%) translateY(0%);
   }
 
@@ -233,6 +207,7 @@ em {
   transform: scale(2);
   z-index: 101;
   transition-delay: 1.5s;
+  backface-visibility: hidden;
 
   .eclat {
     opacity: 1;
@@ -240,7 +215,7 @@ em {
   }
 }
 
-#loader{
+#loader {
   position: fixed;
   height: 10em;
   width: 8em;
@@ -250,6 +225,7 @@ em {
   overflow: visible;
   opacity: 0;
   transition: z-index .01s 1.5s, opacity 1.5s;
+
   * {
     transition: transform 4s cubic-bezier(.86, -0.02, .24, .87);
     transform-origin: center;
@@ -261,6 +237,7 @@ em {
   border-top: 5px solid $darkGrey;
   padding: 1em;
   margin-top: 10em;
+
   li {
     margin: 1em 0;
     text-align: center;
@@ -320,7 +297,7 @@ h2, h3 {
   line-height: 1.5;
 }
 
-h3{
+h3 {
   font-size: 1.4em;
 }
 
@@ -425,29 +402,35 @@ h3{
 
 }
 
-#commentaires{
+#commentaires {
   margin-top: 2em;
   max-width: 52rem; //largeur de l'article
   text-align: left;
   align-items: flex-start;
-  h2{
+
+  h2 {
     margin-bottom: 1em;
   }
-  p{
+
+  p {
     margin-bottom: 1rem;
   }
-  .commenter{
+
+  .commenter {
     font-size: 1.2rem;
     font-weight: normal;
     color: $darkRed;
   }
-  .auteur{
+
+  .auteur {
     font-weight: bold;
     color: $darkInk;
   }
-  form{
+
+  form {
     margin: 2rem auto;
-    input[type="submit"]{
+
+    input[type="submit"] {
       width: 8rem;
       min-width: 5rem;
       margin-bottom: 0;
@@ -455,14 +438,14 @@ h3{
   }
 }
 
-.new_entry{
-  div{
+.new_entry {
+  div {
     margin-bottom: 2em;
   }
 }
 
 //Par défaut, sans javascript
-.no_js{
+.no_js {
   display: none;
   opacity: 1;
 }
@@ -471,6 +454,7 @@ h3{
 
 .tox.tox-tinymce {
   height: 50rem !important;
+  width: 90%;
 }
 
 //Styles spécifiques aux pages ------------------------------------------------
@@ -479,7 +463,7 @@ h3{
 @import "pages/entry_single";
 @import "pages/contribution_single";
 @import "pages/forms";
-@import  "pages/error";
+@import "pages/error";
 
 //Responsive ----------------------------------------------------
 
@@ -496,12 +480,13 @@ h3{
     bottom: 55%;
   }
 
-  #main_nav::before{
+  #main_nav::before {
     width: 60%;
   }
 
   .articles_list {
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+
     li:nth-child(2n), li:nth-child(3n) {
       grid-row: span 2;
       grid-column: span 2;
@@ -511,8 +496,9 @@ h3{
       grid-row: span 2;
       grid-column: span 2;
     }
-    .image_container{
-      img{
+
+    .image_container {
+      img {
         max-width: 100%;
         height: auto;
       }
