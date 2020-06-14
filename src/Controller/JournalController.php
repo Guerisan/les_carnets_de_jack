@@ -74,10 +74,11 @@ class JournalController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            //TODO :: Il n'est pas possible de remplir la date voulue dans le formulaire, Symfony rentre systématiquement le 01/01/1970
             $illustration = $entry->getIllustration();
             $slug = $entry->slugify($entry->getTitle());
             $entry->setSlug($slug);
+            //TODO :: Il n'est pas possible de remplir la date voulue dans le formulaire, Symfony rentre systématiquement le 01/01/1970
+            //On rentre donc ici par dépit la date du jour, sans prendre en compte celle entrée dans le formulaire
             $entry->setDate(time());
 
             if ($illustration !== null){
@@ -108,7 +109,8 @@ class JournalController extends AbstractController
         }
 
         return $this->render('/journal/new_entry.html.twig', [
-            'Form' => $form->createView()
+            'form' => $form->createView(),
+            'entry' => $entry,
         ]);
     }
 
@@ -118,7 +120,7 @@ class JournalController extends AbstractController
 * @Security("is_granted('ROLE_ADMIN')")
 */
 
-    public function endit_entry($id, Request $request)
+    public function edit_entry($id, Request $request)
     {
 
         $depot = $this->getDoctrine()->getRepository(JournalEntry::class);
@@ -163,7 +165,7 @@ class JournalController extends AbstractController
         }
 
         return $this->render('/journal/new_entry.html.twig', [
-            'Form' => $form->createView()]);
+            'form' => $form->createView()]);
     }
 
 

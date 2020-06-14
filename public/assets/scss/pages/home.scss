@@ -64,7 +64,7 @@
 
   .post_banner, .fragment_1, .fragment_2, .fragment_mini {
     width: 100%;
-    background: url("../img/separation_1.jpg") no-repeat center fixed;
+    background: url("../img/separation_1.jpg") no-repeat center scroll;
     background-size: cover;
   }
 
@@ -369,6 +369,12 @@ section.soon {
 
     .accueil.accueil_banner{
       height: 112px;
+    }
+
+    .post_banner_container{
+      .post_banner, .fragment_1, .fragment_2, .fragment_mini{
+        background-attachment: fixed;
+      }
     }
 
     section {

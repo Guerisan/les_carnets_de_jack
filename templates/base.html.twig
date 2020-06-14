@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Les Carnets de Jack |{% endblock %}</title>
+    {% block description %}
+        <meta name="description" content="Récits d'aventures et partage d'expériences">
+    {% endblock %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset("css/reset.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/style.css") }}">
+    {% endblock %}
+    <link rel="icon" href="{{ asset('img/pennae.png') }}">
+</head>
+<body class="{% block bodyClass %}{% endblock %}">
+{% include 'svg/glass_wall.svg' %}
+{% include 'svg/loader.svg' %}
+<script>//Gestion du css sans JS
+    let no_js = document.getElementsByClassName("no_js");
+    console.log(no_js);
+    if (no_js) {
+        for (let i = 0; i < no_js.length; i++) {
+            no_js[i].classList.remove("no_js");
+        }
+    }</script>
+{#
+{% if app.request.attributes.get('_route') is not same as ('index') %}
+    <a href="{{ path('index') }}" id="accueil"> {% include 'svg/logo.svg' %}</a>
+{% endif %}
+#}
+<input type="checkbox" name="toggle_menu" id="toggle_menu">
+<label for="toggle_menu" id="menu_wheel">
+</label>
+
+<nav id="main_nav">
+        <div class="nav_illustration"></div>
+    <ul>
+        {% block nav %}
+            {% if app.request.attributes.get('_route') is not same as ('index') %}
+                <li><a href="{{ path('index') }}">Accueil</a></li>
+            {% endif %}
+            <li><a href="{{ path('journal_index') }}">Journal de bord</a></li>
+            <li><a href="{#{{ path('tales_list') }}#}" class="soon_link">Récits Historiques</a></li>
+            <li><a href="{#{{ path('contribution_index') }}#}" class="soon_link">Vos récits</a></li>
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+            {% else %}
+                <li><a href="{{ path('app_login') }}">Connexion</a></li>
+            {% endif %}
+            <li><a href="{{ path('contact') }}">Contact</a></li>
+
+        {% endblock %}
+    </ul>
+    <div class="blacksail"></div>
+</nav>
+
+{% block body %}{% endblock %}
+
+<footer class="base_footer">
+    <div class="container">
+        <ul>
+            <li><a href="{{ path('contact') }}">Contact</a></li>
+            <li><a href="{{ path('legals') }}">Mentions légales</a></li>
+        </ul>
+    </div>
+</footer>
+
+{% block javascripts %}
+    <script src="{{ asset("js/main.js") }}"></script>
+{% endblock %}
+
+
+</body>
+</html>

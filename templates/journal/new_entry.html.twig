@@ -5,18 +5,19 @@
 {% block bodyClass %}new_entry{% endblock %}
 
 {% block body %}
+
     <h1>Journal de bord : nouvelle entrée.</h1>
 
     <div class="container">
 
-        {{ form_start(Form) }}
-        {{ form_row(Form.title) }}
-        {{ form_row(Form.date) }}
-        {{ form_row(Form.content) }}
-        {{ form_row(Form.tags) }}
-        {{ form_row(Form.illustration) }}
+        {{ form_start(form, {attr:{'id': "new_entry_editor"}}) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.date) }}
+        {{ form_row(form.content) }}
+        {{ form_row(form.tags) }}
+        {{ form_row(form.illustration) }}
         <input type="submit" value="Envoyer">
-        {{ form_end(Form) }}
+        {{ form_end(form) }}
     </div>
 {% endblock %}
 

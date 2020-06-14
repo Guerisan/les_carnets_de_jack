@@ -1,12 +1,3 @@
-//Gestion du css sans JS
-let no_js = document.getElementsByClassName("no_js");
-console.log(no_js);
-if (no_js) {
-    for (let i = 0; i < no_js.length; i++) {
-        no_js[i].classList.remove("no_js");
-    }
-}
-
 let beacon = document.querySelectorAll('.trigger');
 for (let i = 0; i < beacon.length; i++) {
     beacon[i].classList.remove("triggered")
@@ -180,7 +171,7 @@ let pageHide = function () {
     }
 };
 
-for (i = 0; i < allLinks.length; i++) {
+for (let i = 0; i < allLinks.length; i++) {
     allLinks[i].addEventListener("click", function (e) {
         if (this.target !== "_blank") {
             e.preventDefault();
@@ -232,20 +223,56 @@ if (mce[0]) {
     mce[0].removeAttribute("required");
     tinymce.init({
         selector: '.tinymce',
-        plugins: "image link",
+        convert_urls: false,
+        statusbar: false,
+        plugins: "image link code",
+        images_upload_url: '/attachment',
+        // override default upload handler to simulate successful upload
+        images_upload_handler: function (blobInfo, success, failure) {
+            let xhr, formData;
+
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', '/attachment');
+
+            xhr.onload = function() {
+                let json;
+
+                if (xhr.status !== 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+                console.log(xhr.responseText);
+
+                json = JSON.parse(xhr.responseText);
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+
+                success(json.location);
+            };
+
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+            xhr.send(formData);
+        },
         setup: function (editor) {
             editor.on('change', function () {
                 editor.save();
             });
-        }
+        },
+
     });
 }
 
 //Animation de la page d'erreur
+//TODO:: Empêcher l'animation de chargement de s'effectuer en arrière plan si la page a bien chargé
 
 let errorPage = document.getElementsByClassName("error_page");
 
-if (errorPage) {
+if (errorPage[0]) {
     let loader = document.getElementById("loader");
     setTimeout(function () {
         loader.classList.add('explode')
