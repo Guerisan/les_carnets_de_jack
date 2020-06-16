@@ -2,6 +2,7 @@
 
 .home section.banner {
   margin-bottom: 0;
+  position: relative;
 }
 
 .accueil.accueil_banner {
@@ -13,6 +14,36 @@
   height: 71px;
   margin-bottom: .3em;
   margin-left: .3em;
+}
+
+.go_down{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 1rem;
+  svg{
+    height: 3rem;
+    width: 1.5rem;
+    overflow: visible;
+    *{
+      transition: .6s ease-in-out;
+      animation: shiny 3s ease-in-out infinite;
+    }
+  }
+  a{
+    display: inline-block;
+    &:hover{
+      .gd_2{
+        transform: translateY(2rem);
+      }
+      .gd_1{
+       transform: translateY(4rem);
+      }
+      .gd_3{
+        transform: translateY(6rem);
+      }
+    }
+  }
 }
 
 .accroche {

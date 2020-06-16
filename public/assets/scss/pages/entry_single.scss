@@ -18,8 +18,9 @@
 
   .index_img {
     min-height: 15rem;
-    max-height: 55rem;
+    max-height: 45rem;
     width: 100%;
+    max-width: 80rem;
   }
 
 
@@ -46,7 +47,7 @@
     }
   }
 
-  article, #tinymce {
+  article, #new_entry_editor .mce-content-body {
     max-width: 52rem;
     margin-top: 2rem;
     box-shadow: 1px 1px 11px 0 rgba(50, 50, 50, 0.1);
@@ -54,6 +55,10 @@
     p {
       margin-bottom: 1rem !important;
       font-size: 1.1rem;
+    }
+
+    img{
+      min-height: 20rem
     }
 
     em {

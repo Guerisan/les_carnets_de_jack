@@ -4,6 +4,7 @@
     "require": {
         "php": "^7.2.5",
         "ext-ctype": "*",
+        "ext-dom": "20031129",
         "ext-iconv": "*",
         "ext-json": "^7.4",
         "sensio/framework-extra-bundle": "^5.1",

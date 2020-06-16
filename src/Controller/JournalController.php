@@ -14,10 +14,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use DOMDocument;
 
 
 /**
- * @Route("/Journal")
+ * @Route("/journal")
  */
 
 class JournalController extends AbstractController
@@ -37,7 +38,7 @@ class JournalController extends AbstractController
     }
 
     /**
-     * @Route("/Tag/{tag}", name="entry_category")
+     * @Route("/tag/{tag}", name="entry_category")
      */
 
     public function category($tag){
@@ -58,7 +59,7 @@ class JournalController extends AbstractController
     }
 
     /**
-     * @Route("/Nouveau", name="new_entry")
+     * @Route("/nouveau", name="new_entry")
      * @Security("is_granted('ROLE_ADMIN')")
      */
 
@@ -115,7 +116,7 @@ class JournalController extends AbstractController
     }
 
 /**
-* @Route("/Edition/{id}", name="edit_entry"))
+* @Route("/edition/{id}", name="edit_entry"))
 *
 * @Security("is_granted('ROLE_ADMIN')")
 */
@@ -176,6 +177,33 @@ class JournalController extends AbstractController
     public function singleEntry(JournalEntry $entry, string $slug, Request $request){
 
         $entry = $this->getDoctrine()->getRepository(JournalEntry::class)->findOneBy(['slug' => $slug]);
+
+        //Préparation des images pour le lazy loading
+        $dom = new DOMDocument;
+        $dom->loadHTML($entry->getContent());
+        $imgs = $dom->getElementsByTagName('img');
+        $imagesSrc = [];
+        foreach ($imgs as $img) {
+            $originalSrc = $img->getAttribute('src');
+            $newNode = $img;
+            $newNode->setAttribute('src', '');
+            $newNode->setAttribute('data-src', $originalSrc);
+            $newNode->setAttribute('class', 'trigger');
+            $newNode->parentNode->replaceChild($newNode, $img);
+        }
+
+        $newContent = $dom->getElementsByTagName('body')->item(0);
+
+        $innerHTML = "";
+        $children  = $newContent->childNodes;
+
+        foreach ($children as $child)
+        {
+            $innerHTML .= $newContent->ownerDocument->saveHTML($child);
+        }
+        $entry->setContent($innerHTML);
+
+
 
         $depot = $this->getDoctrine()->getRepository(Commentary::class);
         $comments = $depot->findBy(['journalEntry' => $entry->getId()]);
