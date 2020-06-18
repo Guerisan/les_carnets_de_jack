@@ -1,13 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164.82 263.17">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 221.83 249.18">
     <defs>
-        <style>.gd_1{fill:#723d3d;}.gd_2{fill:#6e4a93;}.gd_3{fill:#666c91;}</style>
+        <style>.gd-1{fill:#374194;}.gd-2{fill:#463a8e;}.gd-3{fill:#871212;}</style>
     </defs>
     <title>go_down</title>
     <g id="Calque_2" data-name="Calque 2">
         <g id="Calque_1-2" data-name="Calque 1">
-            <polygon class="gd_1" points="0 77.73 57.82 89.64 57.69 165.07 0 77.73"/>
-            <polygon class="gd_2" points="41.23 18.69 164.82 0 115.98 53.41 41.23 18.69"/>
-            <polygon class="gd_3" points="104.61 140.81 96.79 263.18 143.03 135.47 104.61 140.81"/>
+            <g id="Calque_1-2-2" data-name="Calque 1-2">
+                <polygon class="gd-1" points="0 113.05 59.03 113.71 73.29 187.78 0 113.05"/>
+                <polygon class="gd-2" points="52.03 18.69 175.62 0 126.78 53.41 52.03 18.69"/>
+                <polygon class="gd-3" points="183.41 126.81 175.59 249.18 221.83 121.47 183.41 126.81"/>
+            </g>
         </g>
     </g>
 </svg>

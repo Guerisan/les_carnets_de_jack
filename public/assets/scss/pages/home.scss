@@ -16,35 +16,42 @@
   margin-left: .3em;
 }
 
-.go_down{
+.go_down {
   display: flex;
   justify-content: center;
   position: absolute;
   bottom: 1rem;
-  svg{
+
+  svg {
     height: 3rem;
     width: 1.5rem;
     overflow: visible;
-    *{
+    animation: go_down 4s linear infinite;
+
+    * {
       transition: .6s ease-in-out;
       animation: shiny 3s ease-in-out infinite;
     }
   }
-  a{
+
+  a {
     display: inline-block;
-    &:hover{
-      .gd_2{
-        transform: translateY(2rem);
-      }
-      .gd_1{
-       transform: translateY(4rem);
-      }
-      .gd_3{
-        transform: translateY(6rem);
+
+    &:hover {
+        .gd-2 {
+          transform: translateY(-6rem);
+        }
+
+        .gd-1 {
+          transform: translateY(10rem);
+        }
+
+        .gd-3 {
+          transform: translate3d(10rem, 5rem, 0);
+        }
       }
     }
   }
-}
 
 .accroche {
   font-size: 1.2em;
@@ -78,12 +85,12 @@
 
 }
 
-.accroche.triggered::after{
+.accroche.triggered::after {
   background: url("../img/compass_ink.png") no-repeat center 0rem;
   background-size: contain;
 }
 
-.fragment, .sep_frag{
+.fragment, .sep_frag {
   opacity: .8;
 }
 
@@ -154,9 +161,10 @@
 }
 
 .home {
-  .container{
+  .container {
     overflow: hidden;
   }
+
   h1 {
     font-size: 2em;
     margin-top: 0;
@@ -184,6 +192,13 @@
   .illustration {
     position: relative;
     max-width: 32em;
+    img{
+      position: relative;
+      &::before{
+        content: "";
+        
+      }
+    }
   }
 
 }
@@ -219,6 +234,11 @@
     height: 3em;
     background-image: url("../img/backpack.jpg");
   }
+
+  .fragment.lazy {
+    background-image: none;
+  }
+
 
   .fragment_1 {
     width: 9em;
@@ -262,6 +282,10 @@
     background-image: url("../img/recit_illu.jpg");
   }
 
+  .fragment.lazy {
+    background-image: none;
+  }
+
   .fragment_1 {
     width: 9em;
     position: absolute;
@@ -278,7 +302,7 @@
     height: 3em;
     top: 70%;
     left: -10%;
-    background-position-y: 70%;
+    background-position-y: 95%;
   }
 
   p {
@@ -305,6 +329,10 @@
     height: 2em;
     background-image: url("../img/contributions.jpg");
     position: absolute;
+  }
+
+  .fragment.lazy {
+    background-image: none;
   }
 
   .fragment_1 {
@@ -356,6 +384,10 @@
     position: absolute;
   }
 
+  .fragment.lazy {
+    background-image: none;
+  }
+
   .fragment_1 {
     width: 8em;
     left: -14%;
@@ -398,12 +430,12 @@ section.soon {
       font-size: 3em;
     }
 
-    .accueil.accueil_banner{
+    .accueil.accueil_banner {
       height: 112px;
     }
 
-    .post_banner_container{
-      .post_banner, .fragment_1, .fragment_2, .fragment_mini{
+    .post_banner_container {
+      .post_banner, .fragment_1, .fragment_2, .fragment_mini {
         background-attachment: fixed;
       }
     }

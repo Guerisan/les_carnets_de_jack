@@ -3,7 +3,16 @@ for (let i = 0; i < beacon.length; i++) {
     beacon[i].classList.remove("triggered")
 }
 
+//animations de chargement
+let loader = document.getElementById("loader");
+setTimeout(function () {
+    loader.classList.add('explode')
+}, 10);
 
+setTimeout(function () {
+    if (document.readyState !== "complete")
+    loader.classList.add('vortex')
+}, 4100);
 // Popup de confirmation pour suppression et validation -------------------------------------------------------------------
 
 const sup = document.getElementById('suppression');
@@ -23,6 +32,8 @@ if (val) {
 }
 
 window.addEventListener('load', function () {
+
+
 
     //Révélation de la page
 
@@ -136,7 +147,6 @@ window.addEventListener('load', function () {
 let allLinks = document.querySelectorAll("a");
 let glassWall = document.getElementById("glass_wall");
 let shards = document.getElementsByClassName("eclat");
-let loader = document.getElementById("loader");
 
 //Le loader apparaît pendant que la page finit de charger
 loader.style.opacity = "1";
@@ -158,6 +168,11 @@ let pageReveal = function () {
         loader.style.opacity = "0";
         loader.style.zIndex = "-100";
     }
+
+    setTimeout(function () {
+        loader.classList.remove('explode');
+        loader.classList.remove('vortex');
+    },2000)
 };
 
 let pageHide = function () {
@@ -318,20 +333,4 @@ if (mce[0]) {
         },
 
     });
-}
-
-//Animation de la page d'erreur
-//TODO:: Empêcher l'animation de chargement de s'effectuer en arrière plan si la page a bien chargé
-
-let errorPage = document.getElementsByClassName("error_page");
-
-if (errorPage[0]) {
-    let loader = document.getElementById("loader");
-    setTimeout(function () {
-        loader.classList.add('explode')
-    }, 1000);
-
-    setTimeout(function () {
-        loader.classList.add('vortex')
-    }, 5000)
 }
