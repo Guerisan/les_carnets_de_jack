@@ -4,14 +4,17 @@
 
 {% block body %}
 
-    {{ form_start(sourceForm) }}
-    {{ form_row(sourceForm.title) }}
-    {{ form_row(sourceForm.adress) }}
-    <input type="submit" value="Poster">
-    {{ form_end(sourceForm) }}
+    <h1>Enregistrer une source</h1>
 
-    {% for message in app.session.flashBag.get('source') %}
-        <p>{{ message }}</p>
-    {% endfor %}
+    <div class="container source_form">
+        {{ form_start(sourceForm) }}
+        {{ form_row(sourceForm.title) }}
+        {{ form_row(sourceForm.adress) }}
+        <input type="submit" value="Poster">
+        {{ form_end(sourceForm) }}
 
+        {% for message in app.session.flashBag.get('source') %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
 {% endblock %}

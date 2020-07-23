@@ -21,7 +21,16 @@ img {
   object-fit: cover;
 }
 
-p {
+.textNimg ul{
+  list-style-type: disc;
+  list-style-position: inside;
+  li{
+    margin-bottom: .5rem;
+    line-height: 1.8rem;
+  }
+}
+
+p, .textNimg ul {
   font-family: Raleway, sans-serif;
   font-weight: normal;
   font-size: 1.1em;
@@ -116,7 +125,7 @@ em {
   transition: $menuDuration ease-in-out;
   background: #fff;
   z-index: 100;
-  box-shadow: 117px 0 122px 0 rgba(255, 255, 255, 1);
+  box-shadow: 200px 0 710px 175px #fff;
   opacity: 0;
 
   ul {
@@ -186,7 +195,6 @@ em {
   }
 
   .nav_illustration {
-    transition-delay: .06s;
     transform: translateX(0%) translateY(0%);
   }
 
@@ -263,7 +271,6 @@ body {
   url("../img/philippines.png") no-repeat;
 
   background-position: 0 0, 90% 80px, 5% 480px, 10% 480px, 55% 600px; //Synthaxe normale, préparation pour l'effet parallaxe
-  background-size: 30%, 50%, 5%, 30%, 40%;
 }
 
 
@@ -322,7 +329,7 @@ h3 {
   margin-top: 7rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  grid-auto-rows: 8rem;
+  grid-auto-rows: 5rem;
   grid-auto-flow: dense;
   grid-gap: 1rem;
 
@@ -365,20 +372,21 @@ h3 {
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.75);
     transition: $standardTransition;
-    border: 10px solid transparent;
+    border: 15px solid rgba(55, 67, 90, 0.21);
 
 
     h2 {
       background: rgba(26, 26, 26, 0.56);
       padding: .5rem 2rem;
       box-shadow: 21px 31px 43px -35px rgba(0, 0, 0, 0.75);
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       text-align: center;
       transition: $standardTransition;
-      border: 1px solid #fff;
-      line-height: 1.2;
+      border: 1px solid transparent;
+      line-height: 1;
+
     }
 
     .date {
@@ -388,10 +396,11 @@ h3 {
     }
 
     &:hover {
-      border: 10px solid $darkInk;
+      border: 15px solid rgba(55, 67, 90, 0.8);
 
       h2 {
         background: rgba(26, 26, 26, 0.86);
+        border: 1px solid rgba(255, 255, 255, 0.81);
       }
     }
 
@@ -444,6 +453,24 @@ h3 {
   }
 }
 
+//Inspecteur de documents
+.img_magnifier_container {
+  position: relative;
+}
+
+.img_magnifier_glass {
+  position: absolute;
+  border-radius: 50%;
+  cursor: none;
+  box-shadow: 21px 31px 43px -35px rgba(0, 0, 0, 0.75);
+  /*Set the size of the magnifier glass:*/
+  width: 150px;
+  height: 150px;
+  transition: opacity $standardTransition;
+
+}
+
+
 //Par défaut, sans javascript
 .no_js {
   display: none;
@@ -457,13 +484,16 @@ h3 {
   width: 90%;
 }
 
-//Styles spécifiques aux pages ------------------------------------------------
+//Styles spécifiques ------------------------------------------------
 
 @import "pages/home";
 @import "pages/entry_single";
 @import "pages/contribution_single";
 @import "pages/forms";
 @import "pages/error";
+
+@import "recits/franklin";
+@import "recits/index-recits";
 
 //Responsive ----------------------------------------------------
 
@@ -486,6 +516,7 @@ h3 {
 
   .articles_list {
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    grid-auto-rows: 8rem;
 
     li:nth-child(2n), li:nth-child(3n) {
       grid-row: span 2;
@@ -501,6 +532,12 @@ h3 {
       img {
         max-width: 100%;
         height: auto;
+      }
+    }
+    a{
+      h2{
+        font-size: 1.8rem;
+        line-height: 1.2;
       }
     }
   }

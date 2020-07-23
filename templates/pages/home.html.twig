@@ -45,7 +45,7 @@
                 <p class="trigger triggered jdb_text_1">
                     Pour quelles raisons avons nous envie de partir explorer le monde ? <br>
                     Changer sa vision des choses ? Sortir de sa zone de confort ? <br>
-                    Rechercher une sensation particulière, celle-là même qu'on se saurait pas décrire, mais
+                    Rechercher une sensation particulière, celle-là même qu'on ne saurait décrire, mais
                     que l'on reconnaît immédiatement lorsqu'elle se présente? <br>
                     S'il paraît qu'il existe autant de raisons différentes que de voyageurs, pour moi ce sont au moins toutes ces raisons à la fois.
                     <br>
@@ -80,15 +80,14 @@
         </div>
     </section>
 
-<h2 class="soon">Bientôt...</h2>
 
-    <section class="vers_recits soon">
+    <section class="vers_recits">
         <div class="container">
 
             <div class="content">
                 <div class="illustration illustration_recits">
                     <h2>Les récits historiques</h2>
-                    <a href="{#{{ path('tales_list') }}#}" class="soon_link">
+                    <a href="{{ path('tales_list') }}">
                         <div class="fragment fragment_1 trigger triggered lazy"></div>
                         <img src="" data-src="{{ asset("img/recit_illu.jpg") }}" alt="Le HMS Terror pris dans la glace"
                              class="trigger triggered lazy">
@@ -101,17 +100,19 @@
                     Et à travers les âges certains aventuriers ont vécu des
                     histoires à couper le souffle. En bien comme en mal.
                     <br><br>
-                    On y trouve quelques dossiers sourcés et illustrés,
+                    Dans cette section, on trouve quelques dossiers sourcés et illustrés,
                     parfois accompagnés d'une vidéo narrative, pour en
-                    apprendre davantage sur <a href="{#{{ path('tales_list') }}#}" class="soon_link">ces aventuriers qui ont
+                    apprendre davantage sur <a href="{{ path('tales_list') }}">ces aventuriers qui ont
                         marqué l'Histoire </a>.
                     <br><br>
                     Autant dire qu'ils sont une des raisons qui vous donne
-                    envie de prendre la route.
+                    envie de prendre la route (ou au contraire parfois, de rester bien au chaud chez soi).
                 </p>
             </div>
         </div>
     </section>
+
+<h2 class="soon">Bientôt...</h2>
 
     <section class="vers_contributions soon">
         <div class="container">

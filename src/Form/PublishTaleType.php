@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Recit;
 use Doctrine\DBAL\Types\StringType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -20,6 +21,7 @@ class PublishTaleType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('vue')
+            ->add('illustration', FileType::class, ['data_class' =>null,'label' => 'Illustration principale', 'required'=> false])
             ->add('sources',  EntityType::class, [
                 'class' => Source::class,
                 'multiple' => true,

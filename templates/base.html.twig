@@ -42,7 +42,7 @@
                 <li><a href="{{ path('index') }}">Accueil</a></li>
             {% endif %}
             <li><a href="{{ path('journal_index') }}">Journal de bord</a></li>
-            <li><a href="{#{{ path('tales_list') }}#}" class="soon_link">Récits Historiques</a></li>
+            <li><a href="{{ path('tales_list') }}">Récits Historiques</a></li>
             <li><a href="{#{{ path('contribution_index') }}#}" class="soon_link">Vos récits</a></li>
 
             {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}

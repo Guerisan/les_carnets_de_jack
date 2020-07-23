@@ -21,11 +21,11 @@ class FrontController extends AbstractController
 
     public function index(){
 
+        /*
         $depot = $this->getDoctrine()->getRepository(JournalEntry::class);
         $lastEntry = $depot->findOneBy(array('id' => 'DESC'));
-        return $this->render('/pages/home.html.twig', [
-            'lastEntry' => $lastEntry,
-        ]);
+        */
+        return $this->render('/pages/home.html.twig');
     }
 
     /**

@@ -5,8 +5,10 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     img_directory: '%kernel.project_dir%/public/assets/img/'
+    uploads_directory: '%kernel.project_dir%/public/assets/uploads/'
     images_contribution_directory: '%kernel.project_dir%/public/assets/uploads/img/contributions/'
     images_journal_directory: '%kernel.project_dir%/public/assets/uploads/img/journal/'
+    container.dumper.inline_factories: true
 
 services:
     # default configuration for services in *this* file

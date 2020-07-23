@@ -1,10 +1,366 @@
 {% block body %}
     <h1>L'expédition perdue de John Franklin</h1>
-
     <h2>De Bois et de glace</h2>
+    <div class="container">
+        <p class="introduction">
+            <em>
+                S’il y a généralement une corrélation directe entre le niveau de préparation d’une aventure et son taux
+                de
+                réussite, il est parfois arrivé que les explorateurs subissent un destin dont les dimensions tragiques
+                surpassent même le niveau d’espoir sur lequel se fondait leur <br>voyage d’origine.
+            </em>
+            <br>
+            Et parmis ces histoires, celle de l’expédition perdue de John Franklin donnerait des frissons
+            dans le dos du plus enthousiaste des vagabonds.
+        </p>
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/7rwwCEAhr8M"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="center_image">
+            <img src="{{ asset('img/recit_franklin/franklin_intro.jpg') }}"
+                 class="intro_illustration trigger triggered"
+                 alt="L’équipe du NSM Terror sauvant les bateaux et les provisions dans la nuit du 15 mars (1837), 1838, par George Hyde Chamber">
+        </div>
+
+        <div class="contexte textNimg">
+            <p class="short_parag">Notre scène se déroule dans un XIXe siècle où l’Europe centrale connaît une période
+                de paix succédant à
+                d’interminales années d’affrontement, pour la bonne raison que Napoléon Bonaparte est enfin vaincu. <br>
+                Le Royaume uni de la reine Victoria est alors première puissance mondiale à la force de navigation
+                inégalée. Maintenant que
+                les canons sont réduits au silence, les navires sillonnent le monde pour étendre l’Empire britannique.
+                <br>
+                Mais il reste des régions à apprivoiser, et des routes à tracer.</p>
+            <div class="monarques">
+                <figure>
+                    <img src="" data-src="{{ asset('img/recit_franklin/victoria.jpg') }}" alt="Reine Vicoria"
+                         class="victoria lazy trigger triggered">
+                    <figcaption>Reine Victoria</figcaption>
+                </figure>
+                <figure>
+                    <img src="" data-src="{{ asset('img/recit_franklin/napoleon.jpg') }}"
+                         alt="Empereur Napoléon Bonaparte"
+                         class="lazy trigger triggered">
+                    <figcaption>Empereur Napoléon Ier</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="northwest textNimg">
+            <div class="northwest_back_1 shadowed lazy">
+                <div class="northwest_back_2 lazy"></div>
+            </div>
+            <p class="short_parag">
+                L’Ère des grandes découvertes a ouvert de nombreux passages autour du monde, les plus précieux pour les
+                européens étant les routes commerciales communiquant avec l’Asie. Mais que ce soit par le cap des
+                tempêtes,
+                ou le détroit de Magellan, les voyages sont longs. Interminables. <br>
+                Et il serait fantastique de trouver un
+                raccourci par l’Arctique, au Nord des terres canadiennes. <br>
+                À ce jour, tous les explorateurs qui s’y sont risqués ont échoué. Les navires sont fragiles, le climat
+                est
+                très inhospitalier, et les glaces sont capricieuses. Un passage libre il y a quelques instants peut se
+                refermer l’heure suivante, piègeant les marins parfois pour l’éternité.
+            </p>
+        </div>
+
+        <div class="textNimg">
+            <p>
+                Mais l’Angleterre vit une période de révolution ! Nous sommes en pleine ère industrielle, et rien se
+                semble
+                pouvoir arrêter la civilisation.
+                Et puis, Sr John Barrow, second secrétaire de l’amirauté est bien déterminé à révéler ce raccourci au
+                grand
+                jour.
+                <br>
+                Des expéditions, le vieil homme en a planifié des dizaines, souvent même pour l’arctique. Mais il faut
+                déjà
+                commencer par trouver un commandant expérimenté.
+            </p>
+            <ul>
+                <li>
+                    Pourquoi pas l’amiral <strong>William Edward Parry</strong> ? Ce dernier refuse. Il est fatigué de
+                    la
+                    banquise.
+                </li>
+                <li>
+                    L’explorateur <strong>James Clark Ross</strong> ? Non plus. Il a promis à son épouse qu’il en avait
+                    fini
+                    avec les expéditions.
+                </li>
+                <li>
+                    L’officier <strong>James Fitzjames</strong> ? Trop jeune. <br>
+                </li>
+                <li>
+                    Le prometteur <strong>George Back</strong> ? Mauvais caractère. <br>
+                </li>
+                <li>
+                    Le capitaine <strong>Francis Crozier alors</strong> ? Non plus. Il est d”origine modeste. Et
+                    irlandaise
+                    qui plus est.
+                </li>
+            </ul>
+
+            <p>
+                Ce sera donc le chevalier John Franklin, <em>« l’homme qui mangea ses bottes »</em>, un titre hérité
+                d’une de ses
+                anciennes aventures. Il est un peu vieux mais sa réputation n”est plus à faire. Fitzjames et Crozier
+                participeront néanmoins au voyage en tant qu’officiers de bord. <br>
+                Les préparatifs de l’expédition peuvent alors commencer. On affirme déjà que ce sera l’une des plus
+                célèbres
+                de l’histoire de l’Angleterre et du Canada, mais pas pour les raisons que l’on imaginait à l’époque.
+            </p>
+            <div class="officiers">
+                <figure>
+                    <img src="" alt="James Fitzjames" data-src="{{ asset('img/recit_franklin/james_fitzjames.jpg') }}"
+                         class="trigger triggered lazy">
+                    <figcaption>James Fitzjames</figcaption>
+                </figure>
+                <figure>
+                    <img src="" alt="John Franklin" data-src="{{ asset('img/recit_franklin/john_franklin.jpg') }}"
+                         class="trigger triggered lazy">
+                    <figcaption>John Franklin</figcaption>
+                </figure>
+                <figure>
+                    <img src="" alt="Francis Crozier" data-src="{{ asset('img/recit_franklin/francis_crozier.jpg') }}"
+                         class="trigger triggered lazy">
+                    <figcaption>Francis Crozier</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="textNimg ships">
+            <p>
+                Deux voiliers seront affrétés pour l’aventure. Et quels navires ! Le HMS Erebus et le HMS Terror, tous
+                deux
+                inondés de nouvelles technologies : coque renforcée par des poutres et des plaques en fer, gouverne à
+                l’épreuve de la glace, moteur à vapeur qui permet d’avancer et de réchauffer l’équipage (fort à propos),
+                et
+                une innovation révolutionnaire encore non accessible au grand public : la boite de conserve. De ces
+                dernières, il y a suffisamment avec le reste des vivres pour nourrir les équipages pendant trois ans si
+                nécessaire. Cela inclut entre autres 60 tonnes de farine et du jus de citron sensé protéger les marins
+                du
+                scorbut, une maladie terrible qui fait tomber les dents. Et qui provoque des hémoragies. Et dont on
+                finit
+                par mourir évidemment, dans les plus atroces souffrances. <br>
+                Avec en plus une bibliothèque de plus de 1000 livres par navire, les matelots pourront même affronter
+                l’ennui. <br>
+                Qu’est-ce qui pourrait bien aller de travers ?
+            </p>
+            <figure>
+                <img src="" data-src="{{ asset('img/recit_franklin/erebus_and_terror.jpg') }}"
+                     alt="L'Erebus et le Terror" class="trigger triggered lazy">
+                <figcaption>H. M. S. "Erebus" and "Terror"</figcaption>
+            </figure>
+        </div>
+
+        <p class="showtime textNimg">
+            Les 129 membres de l’expédition Franklin lèvent l’ancre le 19 mai 1845 et font voile jusqu’au Groenland où
+            les navires de ravitallement font demi-tour. L’Erebus et le Terror se dirigent alors vers la mer de glace,
+            bien décidés à découvrir le passage qui fera la gloire de la couronne d’Angleterre. Sauf que... <br>
+            Les années passent. Et plus personne n’entendra parler de Franklin ni de ses hommes.
+            <br>
+            Pendant des décennies, les expéditions de sauvetage et de recherche se succèderont sous l’impulsion de
+            l’opinion publique et de Lady Jane Franklin, l’épouse du commandant. L’Aumirauté offre même d’importantes
+            récompenses à quiconque
+            viendrait en aide à l’expédition perdue. <br>
+            En 150 ans de recherches, les différent indices retrouvés finiront par lever le voile sur le sort des
+            navires et de leur équipage. <br>
+            <span class="showtime">Voici une version de l’histoire :</span>
+        </p>
+
+        <div class="textNimg camp">
+            <p>
+                Le commandant Franklin met le cap à l’est, et navigue tout l’été jusqu’à faire escale sur Beechey Island
+                à
+                environ 450km à l’intérieur de l’archipel. Les hommes dressent alors leur premier camp hivernal, car les
+                glaces empêchent les navires d’aller plus loin. Un camp dont les vestiges seront retrouvés cinq années
+                plus
+                tard par d’autres expéditions. Rien d’anormal jusqu’ici, si ce n’est un <strong>macabre détail</strong>
+                : <em>les tombes
+                    enneigées de trois jeunes matelots enterrés dans la glace</em>, sans message ou indication de ce qui
+                a pu leur
+                arriver, ce qui est contraire aux règles du protocole maritime britannique. D’autres détails comme des
+                objets abandonnés, donnent l’impression que les équipages sont repartis dans la précipitation.
+            </p>
+            <div class="corpse_1 shadowed lazy">
+                <div class="corpse_2 lazy"></div>
+            </div>
+        </div>
+
+        <div class="king_william_note textNimg">
+            <div class="note_first_part">
+                <p>
+                    Les deux navires ont ensuite mis cap au Sud à travers le détroit de Peel, une zone qui, à l’époque,
+                    était
+                    encore inexplorée. Ils partivendront toutefois à la dépasser et à atteindre l’Ile du Roi Guillaume
+                    (ou
+                    King
+                    William island) à l’automne 1846 après un nouveau périple de près de 500km. Mais cette fois-ci, un
+                    document
+                    signé de la main de Franklin sera retrouvé conservé dans un cairn à la pointe nord de l’île. Le
+                    commandant y
+                    indique en mai 1847 que les navires sont à nouveau coincés pour l’hiver, mais il précise que «tout
+                    va
+                    bien».
+                    Un détail encore plus curieux que les tombes des marins de Beechey vient toutefois nuancer les notes
+                    optimistes du commandant : c’est un texte rajouté dans la marge par l’officier Francis Crozier : il
+                    y
+                    écrit, un
+                    an plus tard, que les navires sont toujours piégés dans la glace. <br>
+                    Que les températures estivales ne parviennent pas à la faire fondre révèle que les conditions
+                    climatiques
+                    ont été effroyables cette année là. Et aujourd’hui, on sait que de telles situations peuvent durer
+                    jusqu’à
+                    cinq ans. <br>
+                    L’auteur rajoute que 20 autres hommes sont morts. John Franklin, que le jeune Fitzjames décrivait
+                    dans
+                    une
+                    lettre comme «plein de vie et d’énergie», a succombé deux semaines après avoir rédigé son propre
+                    message.
+                    L’équipage est parti depuis trop longtemps pour que les provisions continuent à le protéger du
+                    scorbut.
+                    Le
+                    jus de citron ne se conserve que quelques mois. La faim commence à guetter les équipages. <br>
+                    Et comme si la situation n’était pas déjà suffisamment inquiétante, les hommes ignorent qu’ils ont
+                    lentement
+                    et sûrement été empoisonnés depuis le début du voyage. Les boites de conserves, préparées en masse à
+                    la
+                    hâte
+                    avant le départ contaminent les aliments au plomb. Tout comme le système de production d’eau potable
+                    des
+                    navires.
+                </p>
+
+                <div class="img_magnifier_container">
+                    <img id="the_note" src="{{ asset('img/recit_franklin/king_william_note_low.jpg') }}"
+                         data-src="{{ asset('img/recit_franklin/king_william_note.jpg') }}"
+                         alt="Notes laissées par l'expédition Franklin"
+                         class="trigger triggered lazy">
+                </div>
+
+            </div>
+
+            <p>
+                Les survivants sont donc affaiblis par la <strong>famine</strong>, exposés à une <strong>maladie
+                    mortelle</strong>, souffrent de <strong>problèmes
+                    physiologiques</strong>, de <strong>confusion</strong> et de <strong>paranoïa</strong> à cause de
+                l’empoisonnement au plomb, et sont <strong>pris au piège
+                    dans un enfer de glace.</strong>
+                <br>
+                Crozier rajoute dans son message que les 105 membres restants ont abandonné les navires le 22 avril
+                1858. La troupe, dont il est désormais le meneur, se met en marche vers le Sud en suivant la côte de
+                King William
+                Island. Leur espoir est de s’échapper aux glaces en atteignant l’embouchure de la Backs Fish River. Mais
+                pour cela, il faudra traverser un détroit à mi-chemin. Ils doivent donc trainer avec eux des canots de
+                sauvetage.
+                <br>
+                A partir de ce moment-là, le sors des expéditionnaires devient plus difficile à reconstituer.
+            </p>
+        </div>
+
+        <div class="textNimg hellship">
+            <div>
+                <p>
+                    Pour retrouver la trace du groupe, il faut d’abord suivre les tombes des marins qui jonchent la
+                    première
+                    partie de l’itinéraire. Puis les squelettes, laissés là où ils se sont effondrés. <br>
+                    La même année que la découverte du document du cairn, un des cannots est retrouvé abandonné sur le
+                    chemin.
+                    Il contient des vestiges de la civilisation victorienne, qui, dans cette situation, n’ont constitué
+                    que
+                    des
+                    poids morts. Des tentatives de se raccrocher leur vie passée. Les marins n’étaient pas préparés à
+                    une
+                    telle
+                    expédition terrestre, et il semble qu’ils l”aient compris en cours de route : la pointe du canot
+                    était
+                    dirigée vers l’Erebus et le Terror. Quand il a été abandonné, la troupe avait déjà fait demi-tour.
+                </p>
+
+                <p>
+                    Mais même les navires, leur dernier refuge, ne parvient pas à les maintenir à l’abri. Un second
+                    groupe
+                    de
+                    survivants, qui parviendra à se rendre plus au sud, racontera à des chasseurs inuites qu’un des
+                    navires
+                    a
+                    été renversé par la banquise. Mais les chasseurs ne pourront pas venir en aide au groupe. <br>
+                    Un autre inuit découvrira le second bateau toujours pris dans la glace, à côté duquel une grande
+                    tente
+                    était
+                    dressée. Grimpant à bord, il racontera y avoir trouvé des hommes qui n’étaient plus que l’ombre
+                    d’eux-mêmes,
+                    la peau et la bouche noircis par les engelures et le scorbut. Des hommes qui ont tenté de l’empêcher
+                    de
+                    partir. Mais un capitaine s’est interposé, et l’a exhorté à s’enfuir, en lui répétant de ne jamais
+                    s’approcher de la tente qui se trouvait dehors, ni lui, ni aucun autre.
+                    Une partie de l’équipage s’est isolée du reste ?
+                </p>
+
+                <p>
+                    Si certains survivants sont mis à l’écart, c’est qu’ils sont devenus dangereux pour les autres.
+                    A ce sujet c’est l’explorateur John Rae qui le premier rapportera à l’amirauté britannique que
+                    <em>«D'après l'état mutilé des cadavres et le contenu des bouilloires, il est évident que nos pauvres
+                    compatriotes
+                    ont été réduits à la dernière extrémité – le cannibalisme – dans le but de prolonger leur
+                    existence»</em>.
+                    Beaucoup plus au Sud, vers 1851, un autre inuit aidera quatre matelots à passer l’hiver. Ceux-ci lui
+                    laisseront en retour un sabre d’officier datant de 1835, l’année de promotion de James Fitzjames.
+                    Que ces matelots soient parvenus aussi loin, après avoir surmonté toutes ces épreuves relève du
+                    miracle. Ils ont ensuite repris leur route vers le Canada, mais personne n’a jamais su le fin mot de leur
+                    histoire.
+                    Les hommes de l’expédition Franklin sont vraisemblablement tous morts. <br>
+                    Si Fitzjames faisait partie des quatre marins, et s’ils ont survécu, il n’a jamais repris contact
+                    avec la couronne.
+                </p>
+            </div>
+            <div class="hellship_papers">
+                <div class="img_magnifier_container king_william_map_container">
+                    <img id="king_william_map" src="{{ asset('img/recit_franklin/king_william_map_low.jpg') }}"
+                         data-src="{{ asset('img/recit_franklin/king_william_map.jpg') }}"
+                         alt="Carte de l'itinéraire pédestre des marins de l'Erebus et du Terror"
+                         class="trigger triggered lazy">
+                </div>
+                <div class="img_magnifier_container jr_note_container">
+                    <img id="jr_note" src="{{ asset('img/recit_franklin/cannibal_note_low.jpg') }}"
+                         data-src="{{ asset('img/recit_franklin/cannibal_note.jpg') }}"
+                         alt="Lettre de John Rae"
+                         class="trigger triggered lazy">
+                </div>
+
+            </div>
+        </div>
+
+        <p>
+            Beaucoup plus récemment, <strong>les épaves des deux navires ont été retrouvées</strong>. Le 7 septembre 2014, <strong>l’Erebus</strong> est
+            découvert près de Cambridge Bay à 300km de l’Ile du roi-Guillaume. Le <strong>Terror</strong> est quant à lui révélé au fond
+            de la Terror Bay, à une centaine de kilomètres. Comment son-ils parvenus jusqu”ici ? Deux mystères de plus.
+        </p>
+
+        <p>
+            Ce se seront pas les seuls voiliers de l’époque que leur naufrage aura rendu célèbre. <br>
+            En 1853, le HMS Resolute fait partie avec quatre autre navires d”une expédition de sauvetage commandée par
+            Edward Belcher. Mais le résolute...se fait prendre au piège dans la glace, et est abandonné sur place.
+            Deux ans plus tard, c’est le baleinier George Henry, qui le retrouvera et le ramènera aux Etats Unis. Le
+            navire sera réparé, et rendu au Royaume-Uni comme un geste de paix. Il servira encore quelques décennies
+            dans la Royal Navy, avant que son bois ne soit réutilisé pour fabriquer un bureau, le Resolute desk. Bureau
+            qui sera offert en remerciement au président Hayes des Etats-Unis en 1880. <br>
+            Ainsi donc, c’est le bois d’un navire destiné à sauver l’Expédition Franklin qui aura servi à fabriquer le
+            meuble de travail présidentiel trônant encore aujourd’hui centre du bureau ovale de la Maison Blanche.
+        </p>
+
+        <p>
+            Au total, c’est plus d’une cinquantaine de navire qui sillonneront l’archipel à la recherche des survivants.
+            Et ce seront eux, les explorateurs qui achèveront de cartographier la région.
+        </p>
+
+        <p>
+            Quant au passage arctique, il ne sera finalement vaincu que 25 années plus tard par l’explorateur <a
+                    href="https://fr.wikipedia.org/wiki/Roald_Amundsen" target="_blank">Roald Amundsen</a>. <br>
+            Un exploit qui contribuera à sa légende, mais ne le rendra pas aussi célèbre que la tragique tentative de
+            John Franklin et ses 128 hommes, qui marquera à jamais l’Histoire et l’imaginaire collectif de l’Amérique du
+            Nord et de la Grande Bretagne.
+        </p>
+
+    </div>
 
 {% endblock %}
-

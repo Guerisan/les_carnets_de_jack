@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RecitRepository")
@@ -42,6 +43,11 @@ class Recit
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $date;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $illustration;
 
     public function __construct()
     {
@@ -157,6 +163,18 @@ class Recit
     public function setDate(): self
     {
         $this->date = date('Y-m-d H:i:s');
+
+        return $this;
+    }
+
+    public function getIllustration()
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration($illustration): self
+    {
+        $this->illustration = $illustration;
 
         return $this;
     }
