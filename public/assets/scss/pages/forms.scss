@@ -59,6 +59,11 @@
       min-width: 2rem;
     }
   }
+
+  a{
+    color: $darkRed;
+    text-decoration: none;
+  }
 }
 
 .publish_tale form, .source_form form {

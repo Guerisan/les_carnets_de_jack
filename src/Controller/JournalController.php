@@ -188,7 +188,7 @@ class JournalController extends AbstractController
             $newNode = $img;
             $newNode->setAttribute('src', '');
             $newNode->setAttribute('data-src', $originalSrc);
-            $newNode->setAttribute('class', 'trigger');
+            $newNode->setAttribute('class', 'trigger expandable_picture');
             $newNode->parentNode->replaceChild($newNode, $img);
         }
 
@@ -256,7 +256,11 @@ class JournalController extends AbstractController
         $illustration = $entry->getIllustration();
 
         if ($illustration !== null){
+            try {
             unlink($this->getParameter('images_journal_directory').$illustration);
+            } catch (\Exception $e){
+                $this->addFlash("journal", "Suppression du fichier $illustration impossible. Le fichier n'existe peut-être plus");
+            }
         }
 
         $gestionnaire = $this->getDoctrine()->getManager();

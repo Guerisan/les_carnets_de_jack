@@ -1,4 +1,5 @@
 //sass --watch public/assets/scss/style.scss:public/assets/css/style.css --style=compressed
+@import "reset";
 @import "variables";
 @import "fonts";
 @import "animations";
@@ -52,6 +53,22 @@ strong {
 
 em {
   font-style: italic;
+  &.citation{
+    display: inline-block;
+    font-size: 1.2rem;
+    color: $darkPurple;
+    padding: 1rem;
+    &:before{
+      content: '"';
+      font-size: 3rem;
+      line-height: 1;
+    }
+    &:after{
+      line-height: 1;
+      content: '"';
+      font-size: 3rem;
+    }
+  }
 }
 
 .trigger {
@@ -396,7 +413,7 @@ h3 {
     }
 
     &:hover {
-      border: 15px solid rgba(55, 67, 90, 0.8);
+      border: 15px solid rgba(55, 67, 90, 0.55);
 
       h2 {
         background: rgba(26, 26, 26, 0.86);
@@ -468,6 +485,48 @@ h3 {
   height: 150px;
   transition: opacity $standardTransition;
 
+}
+
+//Affichage d'une image en fullscreen
+
+.expandable_picture , .entry img{
+  cursor: zoom-in;
+}
+
+#fullscreen_container {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  transition: opacity .5s ease-in-out;
+
+  #fullscreen_image {
+    width: auto;
+    box-sizing: border-box;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 2px 2px 5px -1px rgba(50, 50, 50, .3);
+    background: rgba(255, 255, 255, 0.44);
+    max-height: 90vh;
+  }
+
+  &.inactive {
+    opacity: 0;
+    z-index: -1;
+    transition: z-index .1s .5s, opacity .5s ease-in-out;
+  }
+
+  &.active {
+    opacity: 1;
+    z-index: 1;
+  }
 }
 
 

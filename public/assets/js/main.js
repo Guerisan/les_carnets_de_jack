@@ -143,7 +143,6 @@ window.addEventListener('load', function () {
 
 //Transitions de pages
 
-
 let allLinks = document.querySelectorAll("a");
 let glassWall = document.getElementById("glass_wall");
 let shards = document.getElementsByClassName("eclat");
@@ -411,4 +410,50 @@ if (document.getElementsByClassName("franklin")[0]) {
     magnify("the_note", 2);
     magnify("king_william_map", 2);
     magnify("jr_note", 2);
+}
+
+//Affichage d'une image en grand
+
+if (window.innerWidth > 750) {
+
+    let wide_gallery = Array.prototype.slice.call(document.getElementsByClassName("expandable_picture"));
+    let fullscreen_container = document.getElementById("fullscreen_container");
+    let fullscreen_image = document.getElementById("fullscreen_image");
+    let target = null
+
+    function display_fullscreen(e) {
+        target = e.currentTarget;
+        fullscreen_image.src = target.src;
+        fullscreen_container.classList.remove("inactive");
+        fullscreen_container.classList.add("active");
+    }
+
+    function close_fullscreen() {
+        fullscreen_container.classList.add("inactive");
+        fullscreen_container.classList.remove("active");
+    }
+
+    fullscreen_container.addEventListener("click", close_fullscreen);
+
+    for (let i = 0; i < wide_gallery.length; i++) {
+        wide_gallery[i].addEventListener("click", display_fullscreen);
+    }
+
+    document.addEventListener('keydown', function (e) {
+        let targetIndex = wide_gallery.indexOf(target);
+        switch (e.key) {
+            case ('ArrowLeft') :
+                if (targetIndex !== 0) {
+                    target = wide_gallery[targetIndex - 1]
+                    fullscreen_image.src = target.dataset.src;
+                }
+                break;
+            case('ArrowRight'):
+                if (targetIndex !== wide_gallery.length -1) {
+                    target = wide_gallery[targetIndex + 1]
+                    fullscreen_image.src = target.dataset.src
+                }
+                break;
+        }
+    })
 }

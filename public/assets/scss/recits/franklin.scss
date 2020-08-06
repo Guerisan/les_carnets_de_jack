@@ -78,7 +78,7 @@
     }
   }
 
-  .officiers {
+  .officiers, .wrecks {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     grid-gap: 2rem;
@@ -111,7 +111,7 @@
 
   .camp, .note_first_part, .hellship {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     grid-gap: 2rem;
     margin-bottom: 4rem;
   }
@@ -171,6 +171,16 @@
   .jr_note_container{
     max-width: 30rem;
     margin: 0 auto 2rem;
+  }
+
+  .wrecks{
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    img{
+      max-width: 100%;
+    }
+    figcaption{
+      max-width: 100%;
+    }
   }
 }
 

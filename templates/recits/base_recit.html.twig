@@ -9,6 +9,7 @@
         {% include 'recits/' ~ recit.vue ~ '.html.twig' %}
     </section>
 
+    {% if sources is not empty %}
     <section class="sources">
         <div class="container">
             <p>Sources : </p>
@@ -19,6 +20,7 @@
             </ul>
         </div>
     </section>
+    {% endif %}
     <section>
         {% include 'partial/comment.html.twig' %}
     </section>

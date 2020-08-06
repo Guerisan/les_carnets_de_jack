@@ -1,30 +1,35 @@
 @font-face {
   font-family: Raleway;
-  src: url(../fonts/Raleway/Raleway-SemiBold.ttf);
+  src: url(../fonts/Raleway/Raleway-SemiBold.woff2),
+  url(../fonts/Raleway/Raleway-SemiBold.ttf);
   font-weight: 600;
 }
 
 @font-face {
   font-family: Raleway;
-  src: url(../fonts/Raleway/Raleway-Regular.ttf);
+  src: url(../fonts/Raleway/Raleway-Regular.woff2),
+  url(../fonts/Raleway/Raleway-Regular.ttf);
   font-weight: normal;
 }
 
 @font-face {
   font-family: Raleway;
-  src: url(../fonts/Raleway/Raleway-Light.ttf);
+  src: url(../fonts/Raleway/Raleway-Light.woff2),
+  url(../fonts/Raleway/Raleway-Light.ttf);
   font-weight: 200;
 }
 
 @font-face {
   font-family: CormorantGaramond;
-  src: url("../fonts/CormorantGaramond/CormorantGaramond-Bold.ttf");
+  src: url("../fonts/CormorantGaramond/CormorantGaramond-Bold.woff2"),
+  url("../fonts/CormorantGaramond/CormorantGaramond-Bold.ttf");
   font-weight: 700;
 }
 
 @font-face {
   font-family: CormorantGaramond;
-  src: url("../fonts/CormorantGaramond/CormorantGaramond-SemiBold.ttf");
+  src: url("../fonts/CormorantGaramond/CormorantGaramond-SemiBold.woff2"),
+  url("../fonts/CormorantGaramond/CormorantGaramond-SemiBold.ttf");
   font-weight: 600;
 }
 
