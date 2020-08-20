@@ -22,7 +22,7 @@
         {{ form_end(form) }}
     </div>
     <div class="container">
-        {% for message in app.session.flashBag.get('blog') %}
+        {% for message in app.session.flashBag.get('email') %}
             <p>{{ message }}</p>
         {% endfor %}
     </div>

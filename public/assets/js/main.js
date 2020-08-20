@@ -426,11 +426,20 @@ if (window.innerWidth > 750) {
         fullscreen_image.src = target.src;
         fullscreen_container.classList.remove("inactive");
         fullscreen_container.classList.add("active");
+        document.addEventListener('keydown', gallerySwitch)
+    }
+
+    function playGalleryTransition() {
+        fullscreen_image.classList.add('gallery_transition')
+        setTimeout(function () {
+            fullscreen_image.classList.remove('gallery_transition')
+        }, 800)
     }
 
     function close_fullscreen() {
         fullscreen_container.classList.add("inactive");
         fullscreen_container.classList.remove("active");
+        document.removeEventListener('keydown', gallerySwitch)
     }
 
     fullscreen_container.addEventListener("click", close_fullscreen);
@@ -439,21 +448,28 @@ if (window.innerWidth > 750) {
         wide_gallery[i].addEventListener("click", display_fullscreen);
     }
 
-    document.addEventListener('keydown', function (e) {
+    function gallerySwitch (e) {
         let targetIndex = wide_gallery.indexOf(target);
         switch (e.key) {
             case ('ArrowLeft') :
                 if (targetIndex !== 0) {
                     target = wide_gallery[targetIndex - 1]
-                    fullscreen_image.src = target.dataset.src;
+                    playGalleryTransition();
+                    setTimeout(function (){
+                        fullscreen_image.src = target.dataset.src;
+                    }, 400)
+
                 }
                 break;
             case('ArrowRight'):
-                if (targetIndex !== wide_gallery.length -1) {
+                if (targetIndex !== wide_gallery.length - 1) {
                     target = wide_gallery[targetIndex + 1]
-                    fullscreen_image.src = target.dataset.src
+                    playGalleryTransition()
+                    setTimeout(function (){
+                        fullscreen_image.src = target.dataset.src;
+                    }, 400)
                 }
                 break;
         }
-    })
+    }
 }

@@ -36,9 +36,19 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
+
+    /**
+     * @ORM\Column(name="presentation", type="text", nullable=true)
+     */
+    private $presentation;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $profile_pic;
 
     public function getId(): ?int
     {
@@ -121,6 +131,30 @@ class User implements UserInterface
     public function setEmail(string $email = '@'): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPresentation(): ?string
+    {
+        return $this->presentation;
+    }
+
+    public function setPresentation(string $presentation): self
+    {
+        $this->presentation = $presentation;
+
+        return $this;
+    }
+
+    public function getProfilePic()
+    {
+        return $this->profile_pic;
+    }
+
+    public function setProfilePic(?string $profile_pic): self
+    {
+        $this->profile_pic = $profile_pic;
 
         return $this;
     }

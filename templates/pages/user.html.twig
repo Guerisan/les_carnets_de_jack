@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} {{ app.user.username}} {% endblock %}
+
+{% block body %}
+
+    <h1>Cabine de :</h1>
+    <div class="subtitle">{{ app.user.username }}</div>
+    <img class="index_img" src="
+                         {% if app.user.profilePic is not null %}
+                            {{ asset('uploads/img/user/' ~ app.user.profilePic) }}
+                        {% else %}
+                            {{ asset("img/placeholder_1.jpg") }}
+                        {% endif %}
+                        " alt="">
+    </div>
+
+    <section class="container">
+        <p>{{ app.user.presentation }}</p>
+    </section>
+
+{% endblock %}

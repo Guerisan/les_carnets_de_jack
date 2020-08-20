@@ -5,6 +5,14 @@
   position: relative;
 }
 
+.user_welcome_message{
+  position: absolute;
+  padding: 2rem;
+  left: 0;
+  top: 0;
+  font-family: "CormorantGaramond", Raleway, sans-serif;
+}
+
 .accueil.accueil_banner {
   position: relative;
   left: auto;
@@ -288,13 +296,14 @@
   }
 
   .fragment_1 {
-    width: 9em;
+    width: 10rem;
     position: absolute;
     z-index: 1;
-    top: 22%;
+    top: 13%;
     right: -10%;
     background-position-x: 10%;
     background-position-y: 10%;
+    height: 3rem;
   }
 
   .fragment_2 {

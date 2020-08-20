@@ -515,6 +515,7 @@ h3 {
     box-shadow: 2px 2px 5px -1px rgba(50, 50, 50, .3);
     background: rgba(255, 255, 255, 0.44);
     max-height: 90vh;
+    transition: .8s ease-in-out;
   }
 
   &.inactive {
@@ -527,6 +528,10 @@ h3 {
     opacity: 1;
     z-index: 1;
   }
+}
+
+.gallery_transition{
+  animation: galleryTransition .8s ease-in-out;
 }
 
 

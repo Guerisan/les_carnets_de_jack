@@ -11,11 +11,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use App\Tool\ControllerTool;
 
 class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="app_register")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param GuardAuthenticatorHandler $guardHandler
+     * @param SiteAuthenticator $authenticator
+     * @return Response
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, SiteAuthenticator $authenticator): Response
     {
@@ -31,6 +37,10 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $profilePic = $form->get('profile_pic')->getData();
+            if ($profilePic != null){
+                $this->handleImage($user, $profilePic);
+            }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -49,5 +59,36 @@ class RegistrationController extends AbstractController
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
+    }
+
+    function handleImage($entity, $image){
+        $illustrationName = ControllerTool::generateUniqueFileName(). '.' . $image->guessExtension();
+        try {
+            $image->move(
+                $this->getParameter('uploads_directory').'/img/user/', $illustrationName
+            );
+        } catch (FileException $e) {
+            $this->addFlash("exception", $e);
+        }
+        $entity->setProfilePic($illustrationName);
+    }
+
+    /**
+     * @Route("/cabin/{user}", name="user_cabin")
+     */
+
+    function user_cabin(){
+        $securityContext = $this->container->get('security.authorization_checker');
+        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->render('pages/user.html.twig', [
+            ]);
+        } else{
+            return $this->render('/security/login.html.twig');
+        }
+    }
+
+    private function generateUniqueFileName()
+    {
+        return md5(uniqid());
     }
 }

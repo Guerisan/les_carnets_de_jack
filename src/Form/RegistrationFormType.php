@@ -4,10 +4,13 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -40,6 +43,17 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('profile_pic', FileType::class,
+                ['data_class' => null,
+                    'label' => 'Une image de profil ?',
+                    'required' => false,
+                    'constraints' => [
+                        new File([
+                            'maxSize' => '2048k',
+                            'mimeTypesMessage' => 'Seuls les formats d\'images statiques sont acceptés',
+                        ])
+                    ],])
+            ->add('presentation', TextareaType::class, ['required' => false] )
         ;
     }
 

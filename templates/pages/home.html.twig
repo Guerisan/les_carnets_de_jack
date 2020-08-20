@@ -5,6 +5,9 @@
 {% block bodyClass %}home{% endblock %}
 {% block body %}
     <section class="banner container">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <p class="user_welcome_message">Salut <strong><em><a href="{{ path('user_cabin', {'user' : app.user.username}) }}">{{ app.user.username}}</a></em></strong> ! Fait comme chez toi.</p>
+        {% endif %}
         <h1>Les Carnets de Jack
             {% include 'svg/logo.svg' %}
         </h1>
