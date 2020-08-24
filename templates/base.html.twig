@@ -45,7 +45,7 @@
             <li><a href="{#{{ path('contribution_index') }}#}" class="soon_link">Vos récits</a></li>
 
             {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                <li><a href="{{ path('user_cabin', {'user' : app.user.username}) }}">Cabine</a></li>
+                <li><a href="{{ path('user_cabin', {'user' : app.user.slug}) }}">Cabine</a></li>
                 <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
             {% else %}
                 <li><a href="{{ path('app_login') }}">Connexion</a></li>

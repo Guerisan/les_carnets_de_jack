@@ -45,7 +45,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('profile_pic', FileType::class,
                 ['data_class' => null,
-                    'label' => 'Une image de profil ?',
+                    'label' => 'Une image de profil ? (2Mo max)',
                     'required' => false,
                     'constraints' => [
                         new File([

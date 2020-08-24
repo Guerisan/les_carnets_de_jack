@@ -1,0 +1,30 @@
+.cabin {
+  .username{
+    color: $darkRed;
+  }
+  .textNimg {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-gap: 2rem;
+    margin-top: 5rem;
+  }
+
+  .user_img {
+    width: 100%;
+    max-width: 30rem;
+    justify-self: center;
+    max-height: 30rem;
+  }
+
+  .user_desc{
+    max-width: 40rem;
+  }
+}
+
+@media screen and (min-width: 1024px)  {
+  .cabin{
+    .textNimg{
+      grid-template-columns: repeat(2, minmax(20rem, 1fr));
+    }
+  }
+}

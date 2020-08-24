@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Tool\ControllerTool;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -49,6 +50,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $profile_pic;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
 
     public function getId(): ?int
     {
@@ -155,6 +161,18 @@ class User implements UserInterface
     public function setProfilePic(?string $profile_pic): self
     {
         $this->profile_pic = $profile_pic;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(): self
+    {
+        $this->slug = ControllerTool::slugify($this->getUsername());
 
         return $this;
     }

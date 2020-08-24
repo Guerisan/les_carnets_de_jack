@@ -454,20 +454,16 @@ if (window.innerWidth > 750) {
             case ('ArrowLeft') :
                 if (targetIndex !== 0) {
                     target = wide_gallery[targetIndex - 1]
-                    playGalleryTransition();
-                    setTimeout(function (){
+                    //playGalleryTransition();
                         fullscreen_image.src = target.dataset.src;
-                    }, 400)
 
                 }
                 break;
             case('ArrowRight'):
                 if (targetIndex !== wide_gallery.length - 1) {
                     target = wide_gallery[targetIndex + 1]
-                    playGalleryTransition()
-                    setTimeout(function (){
+                    //playGalleryTransition()
                         fullscreen_image.src = target.dataset.src;
-                    }, 400)
                 }
                 break;
         }

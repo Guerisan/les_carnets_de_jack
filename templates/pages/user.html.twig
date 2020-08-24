@@ -1,22 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} {{ app.user.username}} {% endblock %}
+{% block title %}Cabine de {{ app.user.username }} {% endblock %}
+
+{% block bodyClass %}cabin{% endblock %}
 
 {% block body %}
 
-    <h1>Cabine de :</h1>
-    <div class="subtitle">{{ app.user.username }}</div>
-    <img class="index_img" src="
+    <h1>Cabine de&nbsp;: <span class="username">&nbsp;{{ app.user.username }}</span></h1>
+
+
+    <div class="container">
+        <div class="textNimg">
+
+            <img class="user_img shadowed" src="
                          {% if app.user.profilePic is not null %}
                             {{ asset('uploads/img/user/' ~ app.user.profilePic) }}
                         {% else %}
                             {{ asset("img/placeholder_1.jpg") }}
                         {% endif %}
                         " alt="">
+            <p class="user_desc">{{ app.user.presentation }}</p>
+        </div>
     </div>
-
-    <section class="container">
-        <p>{{ app.user.presentation }}</p>
-    </section>
 
 {% endblock %}

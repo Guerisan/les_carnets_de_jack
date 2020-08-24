@@ -41,6 +41,7 @@ class RegistrationController extends AbstractController
             if ($profilePic != null){
                 $this->handleImage($user, $profilePic);
             }
+            $user->setSlug();
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -71,24 +72,5 @@ class RegistrationController extends AbstractController
             $this->addFlash("exception", $e);
         }
         $entity->setProfilePic($illustrationName);
-    }
-
-    /**
-     * @Route("/cabin/{user}", name="user_cabin")
-     */
-
-    function user_cabin(){
-        $securityContext = $this->container->get('security.authorization_checker');
-        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->render('pages/user.html.twig', [
-            ]);
-        } else{
-            return $this->render('/security/login.html.twig');
-        }
-    }
-
-    private function generateUniqueFileName()
-    {
-        return md5(uniqid());
     }
 }

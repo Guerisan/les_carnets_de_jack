@@ -57,4 +57,18 @@ class FrontController extends AbstractController
     public function legals(){
         return $this->render('/pages/legals.html.twig');
     }
+
+    /**
+     * @Route("/cabin/{user}", name="user_cabin")
+     */
+
+    function user_cabin(){
+        $securityContext = $this->container->get('security.authorization_checker');
+        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->render('pages/user.html.twig', [
+            ]);
+        } else{
+            return $this->render('/security/login.html.twig');
+        }
+    }
 }

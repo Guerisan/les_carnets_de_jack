@@ -257,6 +257,10 @@ em {
   }
 }
 
+.shadowed{
+  box-shadow: 21px 31px 43px -35px rgba(0, 0, 0, 0.75)
+}
+
 .base_footer {
   font-family: Raleway, sans-serif;
   border-top: 5px solid $darkGrey;
@@ -555,6 +559,7 @@ h3 {
 @import "pages/contribution_single";
 @import "pages/forms";
 @import "pages/error";
+@import "pages/cabin";
 
 @import "recits/franklin";
 @import "recits/index-recits";
