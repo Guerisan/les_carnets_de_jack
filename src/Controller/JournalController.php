@@ -140,7 +140,7 @@ class JournalController extends AbstractController
 
             $illustration = $entry->getIllustration();
 
-            $slug = $entry->slugify($entry->getTitle());
+            $slug = ControllerTool::slugify($entry->getTitle());
             $entry->setSlug($slug);
 
             if ($illustration !== null){
@@ -162,7 +162,7 @@ class JournalController extends AbstractController
             $this->addFlash("journal", "L'article a bien été modifié");
         }
 
-        return $this->render('/journal/new_entry.html.twig', [
+        return $this->render('/journal/journal_index.html.twig', [
             'form' => $form->createView()]);
     }
 
@@ -185,7 +185,7 @@ class JournalController extends AbstractController
             $newNode = $img;
             $newNode->setAttribute('src', '');
             $newNode->setAttribute('data-src', $originalSrc);
-            $newNode->setAttribute('class', 'trigger expandable_picture');
+            $newNode->setAttribute('class', 'trigger expandable_picture lazy');
             $newNode->parentNode->replaceChild($newNode, $img);
         }
 

@@ -23,7 +23,6 @@
     max-width: 80rem;
   }
 
-
   .tags {
     display: flex;
     align-items: center;
@@ -57,13 +56,15 @@
       font-size: 1.1rem;
     }
 
-    img{
+    img {
       min-height: 20rem
     }
 
     em {
       display: inline-block;
-      margin-bottom: 1em;
+      font-size: 1.2rem;
+      color: $darkPurple;
+      padding: 1rem;
     }
 
     a {
@@ -71,7 +72,6 @@
     }
   }
 }
-
 
 
 @media screen and (min-width: 768px) {

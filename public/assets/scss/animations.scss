@@ -17,6 +17,12 @@
   }
 }
 
+.lazy{
+  background: url("../img/blurred-background-1.jpg");
+  background-size: cover;
+  animation: shiny;
+}
+
 .accueil, .accueil_banner {
   * {
     transition: 2s cubic-bezier(0, .5, .36, .99);

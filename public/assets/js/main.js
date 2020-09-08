@@ -241,7 +241,7 @@ if ("IntersectionObserver" in window) {
             if (entry.isIntersecting) {
                 let image = entry.target;
                 image.src = image.dataset.src;
-                image.classList.remove('lazy');
+                image.complete = image.classList.remove('lazy');
                 imageObserver.unobserve(image);
             }
         });
