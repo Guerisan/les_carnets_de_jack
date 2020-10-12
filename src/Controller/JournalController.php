@@ -160,9 +160,10 @@ class JournalController extends AbstractController
 
 
             $this->addFlash("journal", "L'article a bien été modifié");
+            return $this->render('/journal/new_entry.html.twig');
         }
 
-        return $this->render('/journal/journal_index.html.twig', [
+        return $this->render('/journal/new_entry.html.twig', [
             'form' => $form->createView()]);
     }
 

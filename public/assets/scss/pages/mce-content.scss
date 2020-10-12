@@ -1,0 +1,75 @@
+//sass --watch public/assets/scss/pages/mce-content.scss:public/assets/tinymce/skins/ui/oxide/content.min.css --style=compressed
+
+//Le style du contenu de l'éditeur tinymce
+
+@import "../variables";
+@font-face {
+  font-family: Raleway;
+  src: url(../../../../fonts/Raleway/Raleway-SemiBold.woff2),
+  url(../fonts/Raleway/Raleway-SemiBold.ttf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Raleway;
+  src: url(../../../../fonts/Raleway/Raleway-Regular.woff2),
+  url(../../../../fonts/Raleway/Raleway-Regular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Raleway;
+  src: url(../../../../fonts/Raleway/Raleway-Light.woff2),
+  url(../../../../fonts/Raleway/Raleway-Light.ttf);
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: CormorantGaramond;
+  src: url("../../../../fonts/CormorantGaramond/CormorantGaramond-Bold.woff2"),
+  url("../../../../fonts/CormorantGaramond/CormorantGaramond-Bold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: CormorantGaramond;
+  src: url("../../../../fonts/CormorantGaramond/CormorantGaramond-SemiBold.woff2"),
+  url("../../../../fonts/CormorantGaramond/CormorantGaramond-SemiBold.ttf");
+  font-weight: 600;
+}
+body {
+  max-width: 52rem;
+  margin-top: 2rem;
+  box-shadow: 1px 1px 11px 0 rgba(50, 50, 50, 0.1);
+  font-family: Raleway,sans-serif;
+  h2, h3 {
+    font-size: 1.8em;
+    font-weight: 600;
+    line-height: 1.5;
+    font-family: "CormorantGaramond", Raleway, sans-serif;
+  }
+
+  p {
+    margin-bottom: 1rem !important;
+    font-size: 1.1rem;
+    color: #37435a;
+    line-height: 1.8;
+  }
+
+  img {
+    min-height: 20rem;
+    margin: auto;
+  }
+
+  em {
+    display: inline-block;
+    font-size: 1.2rem;
+    color: $darkPurple;
+    padding: 1rem;
+  }
+
+  a {
+    color: $darkRed;
+    font-family: Raleway,sans-serif;
+  }
+}

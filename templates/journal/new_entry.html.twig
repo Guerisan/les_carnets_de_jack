@@ -8,9 +8,9 @@
 
     <h1>Journal de bord : nouvelle entrée.</h1>
 
-    <div class="container">
+    <div class="container journal_form">
 
-        {{ form_start(form, {attr:{'id': "new_entry_editor"}}) }}
+        {{ form_start(form)}}
         {{ form_row(form.title) }}
         {{ form_row(form.date) }}
         {{ form_row(form.content) }}

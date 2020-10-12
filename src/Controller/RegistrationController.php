@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use App\Tool\ControllerTool;
+use App\Notification\Notification;
 
 class RegistrationController extends AbstractController
 {
@@ -23,7 +24,7 @@ class RegistrationController extends AbstractController
      * @param SiteAuthenticator $authenticator
      * @return Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, SiteAuthenticator $authenticator): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, SiteAuthenticator $authenticator, Notification $notification): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -47,7 +48,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // do anything else you need here, like send an email
+            $notification->notify_new_user($user);
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
@@ -55,6 +56,7 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 'main' // firewall name in security.yaml
             );
+
         }
 
         return $this->render('registration/register.html.twig', [

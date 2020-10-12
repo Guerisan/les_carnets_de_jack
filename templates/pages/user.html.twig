@@ -10,7 +10,7 @@
 
 
     <div class="container">
-        <div class="textNimg">
+        <div class="user_grid">
 
             <img class="user_img shadowed" src="
                          {% if app.user.profilePic is not null %}
@@ -21,6 +21,9 @@
                         " alt="">
             <p class="user_desc">{{ app.user.presentation }}</p>
         </div>
+            <ul class="infos textNimg">
+                <li>{{ app.user.email }}</li>
+            </ul>
     </div>
 
 {% endblock %}

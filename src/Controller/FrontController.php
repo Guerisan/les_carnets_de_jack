@@ -3,15 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
-use App\Entity\JournalEntry;
+use App\Entity\User;
 use App\Form\ContactType;
-use App\Notification\ContactNotification;
-use Symfony\Component\HttpFoundation\Response;
+use App\Notification\Notification;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class FrontController extends AbstractController
 {
@@ -19,7 +17,8 @@ class FrontController extends AbstractController
      * @Route("/", name="index")
      */
 
-    public function index(){
+    public function index()
+    {
 
         /*
         $depot = $this->getDoctrine()->getRepository(JournalEntry::class);
@@ -32,13 +31,14 @@ class FrontController extends AbstractController
      * @Route("/Contact", name="contact")
      */
 
-    public function contact(Request $request, ContactNotification $notification){
+    public function contact(Request $request, Notification $notification)
+    {
 
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $notification->notify($contact);
             $this->addFlash('email', "Votre message a bien été envoyé !");
 
@@ -54,7 +54,8 @@ class FrontController extends AbstractController
      * @Route("/Mentions-Legales", name="legals")
      */
 
-    public function legals(){
+    public function legals()
+    {
         return $this->render('/pages/legals.html.twig');
     }
 
@@ -62,13 +63,28 @@ class FrontController extends AbstractController
      * @Route("/cabin/{user}", name="user_cabin")
      */
 
-    function user_cabin(){
+    function user_cabin()
+    {
         $securityContext = $this->container->get('security.authorization_checker');
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->render('pages/user.html.twig', [
             ]);
-        } else{
+        } else {
             return $this->render('/security/login.html.twig');
         }
+    }
+
+    /**
+     * @Route("/crew", name="crew_list")
+     * @Security("is_granted('ROLE_ADMIN')")
+     */
+
+    function users_list()
+    {
+        $depot = $this->getDoctrine()->getRepository(User::class);
+        $crew = $depot->findAll();
+        return $this->render('pages/user.html.twig', [
+            'crew' => $crew,
+        ]);
     }
 }

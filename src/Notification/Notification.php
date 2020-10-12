@@ -5,9 +5,10 @@ namespace App\Notification;
 
 
 use App\Entity\Contact;
+use App\Entity\User;
 use Twig\Environment;
 
-class ContactNotification
+class Notification
 {
     private $mailer;
 
@@ -31,4 +32,14 @@ class ContactNotification
         $this->mailer->send($message);
     }
 
+    public function notify_new_user(User $user){
+        $message = (new \Swift_Message('Carnets de Jack : inscription d\'un nouveau membre ! ' . $user->getUsername()))
+            ->setFrom($user->getEmail())
+            ->setTo('contact@bastien-pinna.net')
+            ->setReplyTo($user->getEmail())
+            ->setBody($this->renderer->render("emails/new_member.html.twig", [
+                'user' => $user
+            ]), 'text/html');
+        $this->mailer->send($message);
+    }
 }

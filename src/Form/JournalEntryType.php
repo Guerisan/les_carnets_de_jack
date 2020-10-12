@@ -37,11 +37,11 @@ class JournalEntryType extends AbstractType
             ->addModelTransformer(new CallbackTransformer(
                 function ($tagsAsArray) {
                     // transform the array to a string
-                    return implode('; ', $tagsAsArray);
+                    return implode(';', $tagsAsArray);
                 },
                 function ($tagsAsString) {
                     // transform the string back to an array
-                    return explode('; ', $tagsAsString);
+                    return explode(';', $tagsAsString);
                 }
             ));
     }
