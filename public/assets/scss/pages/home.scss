@@ -62,7 +62,7 @@
   }
 
 .accroche {
-  font-size: 1.2em;
+  font-size: 1.4em;
   text-align: center;
   margin: 0 auto 0;
   padding-bottom: 15em;
@@ -248,15 +248,23 @@
     background-image: none;
   }
 
-
-  .fragment_1 {
-    width: 9em;
+  .fragment_0 {
+    width: 12em;
+    height: 2.5rem;
     position: absolute;
-    z-index: 1;
-    top: 10%;
+    top: -2%;
     left: -10%;
-    background-position-x: 10%;
-    background-position-y: 10%;
+    background-position-x: 17%;
+    background-position-y: 20%;
+  }
+  .fragment_1 {
+    width: 20em;
+    position: absolute;
+    top: 59%;
+    left: -24%;
+    background-position-x: 31%;
+    background-position-y: 80%;
+    height: 4rem;
   }
 
   .fragment_2 {
@@ -295,15 +303,26 @@
     background-image: none;
   }
 
-  .fragment_1 {
-    width: 10rem;
+  .fragment_0 {
+    width: 17rem;
     position: absolute;
     z-index: 1;
-    top: 13%;
-    right: -10%;
+    top: 14%;
+    left: -14%;
+    background-position-x: 0;
+    background-position-y: 0;
+    height: 4rem;
+  }
+
+  .fragment_1 {
+    width: 14rem;
+    position: absolute;
+    z-index: 1;
+    top: 27%;
+    right: -23%;
     background-position-x: 10%;
     background-position-y: 10%;
-    height: 3rem;
+    height: 3.5rem;
   }
 
   .fragment_2 {

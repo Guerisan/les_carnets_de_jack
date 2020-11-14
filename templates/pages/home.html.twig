@@ -6,7 +6,7 @@
 {% block body %}
     <section class="banner container">
         {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-            <p class="user_welcome_message">Salut <strong><em><a href="{{ path('user_cabin', {'user' : app.user.slug}) }}">{{ app.user.username}}</a></em></strong> ! Fait comme chez toi.</p>
+            <p class="user_welcome_message">Salut <strong><em><a href="{{ path('user_cabin', {'slug' : app.user.slug}) }}">{{ app.user.username}}</a></em></strong> ! Fait comme chez toi.</p>
         {% endif %}
         <h1>Les Carnets de Jack
             {% include 'svg/logo.svg' %}
@@ -64,6 +64,7 @@
                     <a href="{{ path('journal_index') }}">
                         <div class="fragment fragment_1 trigger triggered lazy"></div>
                         <img src="" data-src="{{ asset("img/backpack.jpg") }}" alt="journal de bord" class="trigger triggered lazy">
+                        <div class="fragment fragment_0 trigger triggered lazy"></div>
                         <div class="fragment fragment_2 trigger triggered lazy"></div>
                     </a>
                     <p class="trigger triggered">
@@ -94,6 +95,7 @@
                         <div class="fragment fragment_1 trigger triggered lazy"></div>
                         <img src="" data-src="{{ asset("img/recit_illu.jpg") }}" alt="Le HMS Terror pris dans la glace"
                              class="trigger triggered lazy">
+                        <div class="fragment fragment_0 trigger triggered lazy"></div>
                         <div class="fragment fragment_2 trigger triggered lazy"></div>
                     </a>
                 </div>
@@ -115,6 +117,7 @@
         </div>
     </section>
 
+    <!--
 <h2 class="soon">Bientôt...</h2>
 
     <section class="vers_contributions soon">
@@ -144,7 +147,6 @@
         </div>
     </section>
 
-    <!--
     <section class="vers_utilitaires soon">
         <div class="container">
             <h2>Utilitaires</h2>

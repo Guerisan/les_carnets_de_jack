@@ -59,32 +59,5 @@ class FrontController extends AbstractController
         return $this->render('/pages/legals.html.twig');
     }
 
-    /**
-     * @Route("/cabin/{user}", name="user_cabin")
-     */
 
-    function user_cabin()
-    {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->render('pages/user.html.twig', [
-            ]);
-        } else {
-            return $this->render('/security/login.html.twig');
-        }
-    }
-
-    /**
-     * @Route("/crew", name="crew_list")
-     * @Security("is_granted('ROLE_ADMIN')")
-     */
-
-    function users_list()
-    {
-        $depot = $this->getDoctrine()->getRepository(User::class);
-        $crew = $depot->findAll();
-        return $this->render('pages/user.html.twig', [
-            'crew' => $crew,
-        ]);
-    }
 }

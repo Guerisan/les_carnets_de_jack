@@ -6,23 +6,27 @@
 
 {% block body %}
 
-    <h1>Cabine de&nbsp;: <span class="username">&nbsp;{{ app.user.username }}</span></h1>
-
+    <h1>Cabine de&nbsp;: <span class="username">&nbsp;{{ user.username }}</span></h1>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="admin_toolbox">
+            <a class="admin_tool" href="{{ path('crew_list') }}">Equipage !</a>
+        </div>
+    {% endif %}
 
     <div class="container">
         <div class="user_grid">
 
             <img class="user_img shadowed" src="
-                         {% if app.user.profilePic is not null %}
-                            {{ asset('uploads/img/user/' ~ app.user.profilePic) }}
+                         {% if user.profilePic is not null %}
+                            {{ asset('uploads/img/user/' ~ user.profilePic) }}
                         {% else %}
                             {{ asset("img/placeholder_1.jpg") }}
                         {% endif %}
                         " alt="">
-            <p class="user_desc">{{ app.user.presentation }}</p>
+            <p class="user_desc">{{ user.presentation }}</p>
         </div>
             <ul class="infos textNimg">
-                <li>{{ app.user.email }}</li>
+                <li>{{ user.email }}</li>
             </ul>
     </div>
 

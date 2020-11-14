@@ -146,6 +146,7 @@ window.addEventListener('load', function () {
 let allLinks = document.querySelectorAll("a");
 let glassWall = document.getElementById("glass_wall");
 let shards = document.getElementsByClassName("eclat");
+let duration = 1000
 
 //Le loader apparaît pendant que la page finit de charger
 loader.style.opacity = "1";
@@ -162,7 +163,7 @@ let pageReveal = function () {
 
         shards[i].style.transform = "translate3d(" + y + "px," + x + "px,0px) rotateY(" + d + "deg)";
         shards[i].style.opacity = "0";
-        glassWall.style.transitionDelay = "1.5s";
+        glassWall.style.transitionDelay = ""+duration+"";
         glassWall.style.zIndex = "-100";
         loader.style.opacity = "0";
         loader.style.zIndex = "-100";
@@ -171,7 +172,7 @@ let pageReveal = function () {
     setTimeout(function () {
         loader.classList.remove('explode');
         loader.classList.remove('vortex');
-    }, 2000)
+    }, duration + 500)
 };
 
 let pageHide = function () {
@@ -188,16 +189,20 @@ let pageHide = function () {
 };
 
 for (let i = 0; i < allLinks.length; i++) {
-    allLinks[i].addEventListener("click", function (e) {
-        if (this.target !== "_blank" && !this.classList.contains('anchor')) {
-            e.preventDefault();
-            let href = this.href;
-            pageHide();
-            setTimeout(function () {
-                window.location = href;
-            }, 1500);
-        }
-    })
+
+    if (!allLinks[i].classList.contains('admin_tool') && !allLinks[i].classList.contains('notransition')) {
+
+        allLinks[i].addEventListener("click", function (e) {
+            if (this.target !== "_blank" && !this.classList.contains('anchor')) {
+                e.preventDefault();
+                let href = this.href;
+                pageHide();
+                setTimeout(function () {
+                    window.location = href;
+                }, duration - 300);
+            }
+        })
+    }
 }
 
 //fonctions d'apparition des éléments au scroll
@@ -448,14 +453,14 @@ if (window.innerWidth > 750) {
         wide_gallery[i].addEventListener("click", display_fullscreen);
     }
 
-    function gallerySwitch (e) {
+    function gallerySwitch(e) {
         let targetIndex = wide_gallery.indexOf(target);
         switch (e.key) {
             case ('ArrowLeft') :
                 if (targetIndex !== 0) {
                     target = wide_gallery[targetIndex - 1]
                     //playGalleryTransition();
-                        fullscreen_image.src = target.dataset.src;
+                    fullscreen_image.src = target.dataset.src;
 
                 }
                 break;
@@ -463,7 +468,7 @@ if (window.innerWidth > 750) {
                 if (targetIndex !== wide_gallery.length - 1) {
                     target = wide_gallery[targetIndex + 1]
                     //playGalleryTransition()
-                        fullscreen_image.src = target.dataset.src;
+                    fullscreen_image.src = target.dataset.src;
                 }
                 break;
         }

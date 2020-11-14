@@ -9,7 +9,7 @@
     {% if category is defined %}
         <p class="subline">Catégorie : {{ category }}</p>
     {% else %}
-    <p class="subline">Alors Jack, quelles sont les nouvelles ?</p>
+        <p class="subline">Alors Jack, quelles sont les nouvelles ?</p>
     {% endif %}
 
     <section>
@@ -18,7 +18,9 @@
                 <p>{{ message }}</p>
             {% endfor %}
             {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('new_entry') }}">Nouvelle entrée</a>
+                <div class="admin_toolbox">
+                    <a class="admin_tool" href="{{ path('new_entry') }}">Nouvelle entrée</a>
+                </div>
             {% endif %}
             <ul class="articles_list">
                 {% for entry in entries %}

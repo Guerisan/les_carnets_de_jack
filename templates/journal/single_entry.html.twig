@@ -10,9 +10,9 @@
         <a href="{{ path('journal_index') }}" class="subline">Journal de bord</a>
         <h1>{{ entry.title }}</h1>
         {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('edit_entry', {'id' : entry.id}) }}">Modifier l'entrée</a>
+            <a class="admin_tool" href="{{ path('edit_entry', {'id' : entry.id}) }}">Modifier l'entrée</a>
             <br>
-            <a href="{{ path('del_entry', {'id' : entry.id}) }}" onclick="alert('Confirmer la suppression ?')">Supprimer l'entrée</a>
+            <a class="admin_tool" href="{{ path('del_entry', {'id' : entry.id}) }}" onclick="alert('Confirmer la suppression ?')">Supprimer l'entrée</a>
         {% endif %}
         <div class="tags">
             <p>Tags :</p>

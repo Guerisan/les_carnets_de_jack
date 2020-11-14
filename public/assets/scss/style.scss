@@ -71,6 +71,25 @@ em {
   }
 }
 
+.admin_toolbox{
+  display: grid;
+  grid-gap: 1rem;
+  padding: 1rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  opacity: .5;
+  z-index: 1;
+}
+.admin_tool{
+  font-family: Raleway, sans-serif;
+  background: $darkRed;
+  display: inline-block;
+  color: #fff;
+  padding: .5rem 1rem;
+  text-decoration: none;
+}
+
 .trigger {
   opacity: 0; //Comportement par défaut sans Javascript
   transition: .6s ease-in-out;
@@ -173,7 +192,7 @@ em {
     position: fixed;
     bottom: 75%;
     background: #1a1a1a;
-    transform: translateX(calc(100% + 130px)) rotate(20deg);
+    transform: translate3d(calc(100% + 130px), 0, 0) rotate(20deg);
     transition: $menuDuration ease-in-out;
   }
 
@@ -184,7 +203,7 @@ em {
     bottom: 0;
     right: 0;
     transition: $menuDuration ease-in-out;
-    transform: translateY(100%) translateX(500%);
+    transform: translate3d(500%, 100%, 0) ;
     overflow: hidden;
     backface-visibility: hidden;
     background: url("../img/nav_ibiza.jpg") no-repeat center;
@@ -206,11 +225,11 @@ em {
   opacity: 1;
 
   .blacksail {
-    transform: translateX(0%) rotate(20deg);
+    transform: translate3d(0,0,0) rotate(20deg);
   }
 
   .nav_illustration {
-    transform: translateX(0%) translateY(0%);
+    transform: translate3d(0,0,0);
   }
 
 }
@@ -234,7 +253,8 @@ em {
 
   .eclat {
     opacity: 1;
-    transition: all 1.5s cubic-bezier(.4, -0.05, .18, 1.01);
+    // Note : cette durée a besoin d'être synchronisée avec la fonction pageReveal() dans le main.js
+    transition: all 1s cubic-bezier(.76,.33,.3,.84);
   }
 }
 
@@ -261,9 +281,9 @@ em {
 
 .base_footer {
   font-family: Raleway, sans-serif;
-  border-top: 5px solid $darkGrey;
   padding: 1em;
   margin-top: 10em;
+  background: rgba(255,255,255,.8);
 
   li {
     margin: 1em 0;
@@ -340,6 +360,7 @@ h3 {
 
 .fragment {
   background-repeat: no-repeat;
+  box-shadow: 21px 31px 43px -35px rgba(0, 0, 0, 0.75);
   //filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
 }
 

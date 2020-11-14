@@ -201,8 +201,6 @@ class JournalController extends AbstractController
         }
         $entry->setContent($innerHTML);
 
-
-
         $depot = $this->getDoctrine()->getRepository(Commentary::class);
         $comments = $depot->findBy(['journalEntry' => $entry->getId()]);
 

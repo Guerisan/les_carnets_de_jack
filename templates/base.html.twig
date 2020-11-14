@@ -6,7 +6,6 @@
     {% block description %}
         <meta name="description" content="Récits d'aventures et partage d'expériences">
     {% endblock %}
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset("css/style.css") }}">
     {% block stylesheets %}
@@ -14,7 +13,9 @@
     <link rel="icon" href="{{ asset('img/pennae.png') }}">
 </head>
 <body class="{% block bodyClass %}{% endblock %}">
-{% include 'svg/glass_wall.svg' %}
+<div>
+    {% include 'svg/glass_wall.svg' %}
+</div>
 {% include 'svg/loader.svg' %}
 <script>//Gestion du css sans JS
     let no_js = document.getElementsByClassName("no_js");
@@ -42,15 +43,18 @@
             {% endif %}
             <li><a href="{{ path('journal_index') }}">Journal de bord</a></li>
             <li><a href="{{ path('tales_list') }}">Récits Historiques</a></li>
-            <li><a href="{#{{ path('contribution_index') }}#}" class="soon_link">Vos récits</a></li>
+            {# <li><a href=" {{ path('contribution_index') }} " class="soon_link">Vos récits</a></li> #}
 
             {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                <li><a href="{{ path('user_cabin', {'user' : app.user.slug}) }}">Cabine</a></li>
+                <li><a href="{{ path('user_cabin', {'slug' : app.user.slug}) }}">Cabine</a></li>
                 <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
             {% else %}
                 <li><a href="{{ path('app_login') }}">Connexion</a></li>
             {% endif %}
             <li><a href="{{ path('contact') }}">Contact</a></li>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="{{ path('crew_list') }}">Equipage</a></li>
+            {% endif %}
 
         {% endblock %}
     </ul>
