@@ -12,7 +12,7 @@ setTimeout(function () {
 setTimeout(function () {
     if (document.readyState !== "complete")
         loader.classList.add('vortex')
-}, 4100);
+}, 4000);
 // Popup de confirmation pour suppression et validation -------------------------------------------------------------------
 
 const sup = document.getElementById('suppression');
@@ -411,16 +411,17 @@ function magnify(imgID, zoom) {
     }
 }
 
-if (document.getElementsByClassName("franklin")[0]) {
-    magnify("the_note", 2);
-    magnify("king_william_map", 2);
-    magnify("jr_note", 2);
-}
 
-//Affichage d'une image en grand
 
 if (window.innerWidth > 750) {
 
+    if (document.getElementsByClassName("franklin")[0]) {
+        magnify("the_note", 2);
+        magnify("king_william_map", 2);
+        magnify("jr_note", 2);
+    }
+
+//Affichage d'une image en grand
     let wide_gallery = Array.prototype.slice.call(document.getElementsByClassName("expandable_picture"));
     let fullscreen_container = document.getElementById("fullscreen_container");
     let fullscreen_image = document.getElementById("fullscreen_image");

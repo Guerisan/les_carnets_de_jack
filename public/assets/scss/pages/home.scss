@@ -5,7 +5,7 @@
   position: relative;
 }
 
-.user_welcome_message{
+.user_welcome_message {
   position: absolute;
   padding: 2rem;
   left: 0;
@@ -46,23 +46,23 @@
     display: inline-block;
 
     &:hover {
-        .gd-2 {
-          transform: translateY(-6rem);
-        }
+      .gd-2 {
+        transform: translateY(-6rem);
+      }
 
-        .gd-1 {
-          transform: translateY(10rem);
-        }
+      .gd-1 {
+        transform: translateY(10rem);
+      }
 
-        .gd-3 {
-          transform: translate3d(10rem, 5rem, 0);
-        }
+      .gd-3 {
+        transform: translate3d(10rem, 5rem, 0);
       }
     }
   }
+}
 
 .accroche {
-  font-size: 1.4em;
+  font-size: 1.2em;
   text-align: center;
   margin: 0 auto 0;
   padding-bottom: 15em;
@@ -200,11 +200,13 @@
   .illustration {
     position: relative;
     max-width: 32em;
-    img{
+
+    img {
       position: relative;
-      &::before{
+
+      &::before {
         content: "";
-        
+
       }
 
     }
@@ -257,6 +259,7 @@
     background-position-x: 17%;
     background-position-y: 20%;
   }
+
   .fragment_1 {
     width: 20em;
     position: absolute;
@@ -475,7 +478,9 @@ section.soon {
       }
     }
   }
-
+  .accroche {
+    font-size: 1.3em;
+  }
   .vers_jdb {
     .jdb_text_1 {
       margin-top: 10%;

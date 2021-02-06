@@ -6,29 +6,26 @@ namespace App\Controller;
 use App\Entity\Commentary;
 use App\Entity\JournalEntry;
 use App\Form\CommentFormType;
-use App\Form\ContributionType;
 use App\Form\JournalEntryType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use App\Tool\ControllerTool;
+use DOMDocument;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use DOMDocument;
-use App\Tool\ControllerTool;
 
 
 /**
  * @Route("/journal")
  */
-
 class JournalController extends AbstractController
 {
     /**
      * @Route("/", name="journal_index")
      */
 
-    public function journalIndex(){
+    public function journalIndex()
+    {
 
         $depot = $this->getDoctrine()->getRepository(JournalEntry::class);
         $entries = $depot->findAll();
@@ -38,8 +35,9 @@ class JournalController extends AbstractController
         ]);
     }
 
-    function handleImage($entry, $illustration){
-        $illustrationName = ControllerTool::generateUniqueFileName(). '.' . $illustration->guessExtension();
+    function handleImage($entry, $illustration)
+    {
+        $illustrationName = ControllerTool::generateUniqueFileName() . '.' . $illustration->guessExtension();
         try {
             $illustration->move(
                 $this->getParameter('images_journal_directory'), $illustrationName
@@ -54,12 +52,13 @@ class JournalController extends AbstractController
      * @Route("/tag/{tag}", name="entry_category")
      */
 
-    public function category($tag){
+    public function category($tag)
+    {
         $depot = $this->getDoctrine()->getRepository(JournalEntry::class)->findAll();
         $entries = [];
 
-        foreach ($depot as $entry){
-            if (in_array($tag, $entry->getTags())){
+        foreach ($depot as $entry) {
+            if (in_array($tag, $entry->getTags())) {
                 $entries[] = $entry;
             };
         }
@@ -76,7 +75,8 @@ class JournalController extends AbstractController
      * @Security("is_granted('ROLE_ADMIN')")
      */
 
-    public function newEntry(Request $request){
+    public function newEntry(Request $request)
+    {
 
         $entry = new JournalEntry();
 
@@ -95,7 +95,7 @@ class JournalController extends AbstractController
             //On rentre donc ici par dépit la date du jour, sans prendre en compte celle entrée dans le formulaire
             $entry->setDate(time());
 
-            if ($illustration !== null){
+            if ($illustration !== null) {
                 $this->handleImage($entry, $illustration);
             }
 
@@ -120,11 +120,11 @@ class JournalController extends AbstractController
         ]);
     }
 
-/**
-* @Route("/edition/{id}", name="edit_entry"))
-*
-* @Security("is_granted('ROLE_ADMIN')")
-*/
+    /**
+     * @Route("/edition/{id}", name="edit_entry"))
+     *
+     * @Security("is_granted('ROLE_ADMIN')")
+     */
 
     public function edit_entry($id, Request $request)
     {
@@ -138,12 +138,13 @@ class JournalController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $illustration = $entry->getIllustration();
 
             $slug = ControllerTool::slugify($entry->getTitle());
             $entry->setSlug($slug);
 
-            if ($illustration !== null){
+            $illustration = $form['illustration']->getData();
+
+            if ($illustration) {
                 $this->handleImage($entry, $illustration);
             }
 
@@ -160,7 +161,7 @@ class JournalController extends AbstractController
 
 
             $this->addFlash("journal", "L'article a bien été modifié");
-            return $this->render('/journal/new_entry.html.twig');
+            return $this->redirectToRoute('journal_index');
         }
 
         return $this->render('/journal/new_entry.html.twig', [
@@ -172,7 +173,8 @@ class JournalController extends AbstractController
      * @Route("/{slug}", name="single_entry")
      */
 
-    public function singleEntry(JournalEntry $entry, string $slug, Request $request){
+    public function singleEntry(JournalEntry $entry, string $slug, Request $request)
+    {
 
         $entry = $this->getDoctrine()->getRepository(JournalEntry::class)->findOneBy(['slug' => $slug]);
 
@@ -193,10 +195,9 @@ class JournalController extends AbstractController
         $newContent = $dom->getElementsByTagName('body')->item(0);
 
         $innerHTML = "";
-        $children  = $newContent->childNodes;
+        $children = $newContent->childNodes;
 
-        foreach ($children as $child)
-        {
+        foreach ($children as $child) {
             $innerHTML .= $newContent->ownerDocument->saveHTML($child);
         }
         $entry->setContent($innerHTML);
@@ -230,7 +231,7 @@ class JournalController extends AbstractController
 
             $this->addFlash("blog", "Le commentaire a bien été posté !");
 
-            return $this->redirect($request->getUri()."#commentaires");
+            return $this->redirect($request->getUri() . "#commentaires");
         }
 
         return $this->render('/journal/single_entry.html.twig', [
@@ -245,16 +246,17 @@ class JournalController extends AbstractController
      * @Security("is_granted('ROLE_ADMIN')")
      */
 
-    public function journalEntrySupression($id){
-        $depot  = $this->getDoctrine()->getRepository(JournalEntry::class);
+    public function journalEntrySupression($id)
+    {
+        $depot = $this->getDoctrine()->getRepository(JournalEntry::class);
         $entry = $depot->find($id);
 
         $illustration = $entry->getIllustration();
 
-        if ($illustration !== null){
+        if ($illustration !== null) {
             try {
-            unlink($this->getParameter('images_journal_directory').$illustration);
-            } catch (\Exception $e){
+                unlink($this->getParameter('images_journal_directory') . $illustration);
+            } catch (\Exception $e) {
                 $this->addFlash("journal", "Suppression du fichier $illustration impossible. Le fichier n'existe peut-être plus");
             }
         }

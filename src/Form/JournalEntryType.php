@@ -26,6 +26,7 @@ class JournalEntryType extends AbstractType
                 ['data_class' => null,
                     'label' => 'Illustration principale',
                     'required' => false,
+                    'mapped' => false,
                     'constraints' => [
                         new File([
                             'maxSize' => '2048k',
