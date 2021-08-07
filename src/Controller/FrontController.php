@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\JournalEntry;
 use App\Entity\User;
 use App\Form\ContactType;
 use App\Notification\Notification;
@@ -20,11 +21,20 @@ class FrontController extends AbstractController
     public function index()
     {
 
-        /*
+
         $depot = $this->getDoctrine()->getRepository(JournalEntry::class);
-        $lastEntry = $depot->findOneBy(array('id' => 'DESC'));
-        */
-        return $this->render('/pages/home.html.twig');
+        $lastEntry = $depot->findBy(array(),array('id'=>'DESC'),1,0);
+        if ($lastEntry !== []){
+            $lastEntry = $lastEntry[0];
+            $chapo = substr(strip_tags($lastEntry[0]->getContent()), 0, 300);
+        } else{
+            $chapo = "";
+        }
+
+        return $this->render('/pages/home.html.twig', [
+            "last_entry" =>$lastEntry,
+            "chapo" => $chapo
+        ]);
     }
 
     /**
@@ -39,10 +49,16 @@ class FrontController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $notification->notify($contact);
-            $this->addFlash('email', "Votre message a bien été envoyé !");
+            if ($_POST["email"] === ""){
 
+                $notification->notify($contact);
+                $this->addFlash('email', "Votre message a bien été envoyé !");
+
+            }else{
+                $this->addFlash('email', "Suck my bot =)");
+            }
             $this->redirectToRoute('contact');
+
         }
 
         return $this->render('/pages/contact.html.twig', [

@@ -2,6 +2,29 @@
 
 {% block title %}{{ parent() }} Mentions légales {% endblock %}
 
+{% block bodyClass %}regular_page{% endblock %}
 {% block body %}
+
+    <h1>Mentions légales</h1>
+    <div class="container">
+        <h2>Informations hébergeur :</h2>
+        <p>OVH <br>
+            40 Quai du Sartel <br>
+            59100 ROUBAIX</p>
+        <h2>Propriété intellectuelle :</h2>
+        <p>Tout contenu publié sur ce site (textes, images, vidéos, scripts) peut être réutilisé librement, à condition
+            d'en mentionner la provenance.
+            <br>Vous n'avez pas besoin de me demander l'autorisation, mais n'hésitez pas à donner un lien vers le site
+            ;-)</p>
+        <h2>Traitement des données personnelles :</h2>
+        <h3>Comptes utilisateurs :</h3>
+        <p>Aucun usage n'est fait des données personnelles. Le mail sert d'identifiant et de moyen de contact. <br>
+            Si vous supprimez votre compte, il disparaîtra purement et simplement de la base de données.</p>
+        <h3>Analytics : </h3>
+        <p>Les visites sont comptabilisées via la solution libre et open-source <a href="https://matomo.org/"
+        target="_blank">Matomo Analytics</a>, et les données sont auto-hébergées.<br>
+            La seule finalité est la mesure d'audience.
+        </p>
+    </div>
 
 {% endblock %}

@@ -26,7 +26,7 @@
                 {% for entry in entries %}
                     <li class="index_item">
                         <a href="{{ path('single_entry', {'slug' : entry.slug}) }}">
-                            <h2>{{ entry.title }}</h2>
+                            <h2 class="index_article_title">{{ entry.title }}</h2>
                             <p class="date">{{ entry.date|date("d/m/Y") }}</p>
                         </a>
                         <div class="image_container">

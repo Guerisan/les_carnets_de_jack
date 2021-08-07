@@ -65,12 +65,15 @@
   font-size: 1.2em;
   text-align: center;
   margin: 0 auto 0;
-  padding-bottom: 15em;
+  padding-bottom: 12em;
   max-width: 31em;
   background: url("../img/inkDrop_2.png") no-repeat top right;
   background-size: 4em;
   position: relative;
-
+span{
+  margin-bottom: 1rem;
+  display: inline-block;
+}
   strong {
     font-size: 1.8em;
     font-weight: 600;
@@ -81,7 +84,7 @@
     content: "";
     position: absolute;
     z-index: -1;
-    bottom: 5%;
+    bottom: 0;
     right: -25%;
     min-width: 20em;
     min-height: 20em;
@@ -102,11 +105,15 @@
   opacity: .8;
 }
 
+.fragment{
+  display: none;
+}
+
 .post_banner_container {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(6, 6em);
+  grid-template-rows: repeat(6, 5em);
 
   .post_banner, .fragment_1, .fragment_2, .fragment_mini {
     width: 100%;
@@ -162,9 +169,56 @@
 
     width: 80%;
     justify-self: end;
-    align-self: start;
+    align-self: end;
     margin-top: -1.5em;
     background-position: bottom left;
+  }
+}
+
+.last_article{
+  a{
+    text-decoration: none;
+    color: $darkInk;
+  }
+  .wrapper{
+    display: grid;
+    grid-gap: 4rem;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+  .container h2{
+    margin-bottom: 2rem;
+  }
+  .container{
+    max-width: 64rem;
+  }
+  .last_illustration{
+    max-height: 20rem;
+    display: grid;
+    img{
+      width: 100%;
+      max-height: 20rem;
+      margin-bottom: 0;
+      box-shadow: 21px 31px 43px -35px rgba(0,0,0,.75);
+    }
+    img, h3{
+      grid-row: 1;
+      grid-column: 1;
+      place-self: center;
+    }
+  }
+  .date{
+    font-size: 1.5rem;
+    font-family: "CormorantGaramond", Raleway, sans-serif;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .link{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-family: "CormorantGaramond", Raleway, sans-serif;
+  }
+  .sample{
+    white-space: pre-line;
   }
 }
 
@@ -183,7 +237,7 @@
   }
 
   section {
-    margin-bottom: 10em;
+    margin-bottom: 6em;
 
     img {
       display: block;
@@ -456,6 +510,9 @@ section.soon {
 }
 
 @media screen and (min-width: 768px) {
+  .fragment{
+    display: initial;
+  }
   .home {
     h1 {
       padding-left: 1em;
@@ -478,9 +535,7 @@ section.soon {
       }
     }
   }
-  .accroche {
-    font-size: 1.3em;
-  }
+
   .vers_jdb {
     .jdb_text_1 {
       margin-top: 10%;

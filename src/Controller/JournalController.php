@@ -28,7 +28,7 @@ class JournalController extends AbstractController
     {
 
         $depot = $this->getDoctrine()->getRepository(JournalEntry::class);
-        $entries = $depot->findAll();
+        $entries = $depot->findBy([], ['id'=>'desc']);
 
         return $this->render('/journal/journal_index.html.twig', [
             'entries' => $entries,
@@ -101,8 +101,7 @@ class JournalController extends AbstractController
 
             $tagsList = $form->getData();
             $tagsList = $tagsList->getTags();
-            $tags = explode(";", $tagsList[0]);
-            $entry->setTags($tags);
+            $entry->setTags($tagsList);
 
             $gestionnaire = $this->getDoctrine()->getManager();
             $gestionnaire->persist($entry);
@@ -150,8 +149,7 @@ class JournalController extends AbstractController
 
             $tagsList = $form->getData();
             $tagsList = $tagsList->getTags();
-            $tags = explode(";", $tagsList[0]);
-            $entry->setTags($tags);
+            $entry->setTags($tagsList);
 
             $gestionnaire = $this->getDoctrine()->getManager();
 

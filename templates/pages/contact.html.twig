@@ -17,6 +17,9 @@
             {{ form_widget(form.name) }}
         {% endif %}
         {{ form_widget(form.email) }}
+
+        <label for="email" class="optimus">Email :</label>
+        <input type="text" id="email" class="optimus" name="email">
         {{ form_widget(form.message) }}
         <input type="submit" value="Envoyer">
         {{ form_end(form) }}

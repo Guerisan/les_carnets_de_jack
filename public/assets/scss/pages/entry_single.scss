@@ -56,6 +56,12 @@
       font-size: 1.1rem;
     }
 
+    div{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+      grid-gap: 2rem;
+    }
+
     img {
       min-height: 20rem;
       margin: auto;
