@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Récits historiques{% endblock %}
+
+{% block bodyClass %}{% endblock %}
+
+{% block body %}
+
+    <h1>Découvrez certains des plus grands récits de l'Histoire</h1>
+    <p class="subline">Mes préférés, en tous cas.</p>
+
+
+    <nav>
+        <div class="container">
+            <ul class="list_recits">
+                {% for recit in recits %}
+                    <li><a href="{{ path('recit', {'vue' : recit.vue}) }}">
+                            <div class="deco"
+                                 style="
+                                         background: url('{{ asset('uploads/img/recits/' ~ recit.illustration) }}') no-repeat center;
+                                         background-size: cover;
+                                         ">
+                                <div class="image_container">
+                                    <img class="index_img" src="
+                         {% if recit.illustration is not null %}
+                            {{ asset('uploads/img/recits/' ~ recit.illustration) }}
+                        {% else %}
+                            {{ asset("img/placeholder_1.jpg") }}
+                        {% endif %}
+                        " alt="">
+                                </div>
+                            </div>
+                            <h2>{{ recit.title }}</h2>
+                        </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+
+    {% if is_granted("ROLE_ADMIN") %}
+        <div class="container publish_tale">
+            <p>Insérer un récit historique dans la DB :</p>
+
+            {{ form_start(form) }}
+
+            {{ form_row(form.title) }}
+            {{ form_row(form.vue) }} <span>.html.twig</span>
+            {{ form_row(form.illustration) }}
+            {{ form_row(form.sources) }}
+
+            <input type="submit" value="Publier">
+            {{ form_end(form) }}
+
+            {% for message in app.session.flashBag.get('tale') %}
+                <p>{{ message }}</p>
+            {% endfor %}
+
+            <a href="{{ path('source_register') }}">Ajouter une source</a>
+        </div>
+    {% endif %}
+
+{% endblock %}

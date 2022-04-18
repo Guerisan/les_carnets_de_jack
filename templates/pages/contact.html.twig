@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Contact {% endblock %}
+
+{% block body %}
+
+    <h1>Contact</h1>
+    <p class="subline">Vous souhaitez me contacter directement ? <br>
+        Échangeons !
+    </p>
+
+    <div class="container user_form contact_form">
+        {{ form_start(form) }}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") or is_granted("IS_AUTHENTICATED_FULLY") %}
+            {{ form_widget(form.name, {'attr': {'value': app.user.username}}) }}
+        {% else %}
+            {{ form_widget(form.name) }}
+        {% endif %}
+        {{ form_widget(form.email) }}
+
+        <label for="email" class="optimus">Email :</label>
+        <input type="text" id="email" class="optimus" name="email">
+        {{ form_widget(form.message) }}
+        <input type="submit" value="Envoyer">
+        {{ form_end(form) }}
+    </div>
+    <div class="container">
+        {% for message in app.session.flashBag.get('email') %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}

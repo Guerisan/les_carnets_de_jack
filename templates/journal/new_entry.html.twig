@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Nouvelle entrée du journal {% endblock %}
+
+{% block bodyClass %}new_entry{% endblock %}
+
+{% block body %}
+
+    <h1>Journal de bord : nouvelle entrée.</h1>
+
+    <div class="container journal_form">
+
+        {{ form_start(form)}}
+        {{ form_row(form.title) }}
+        {{ form_row(form.illustration) }}
+        {{ form_row(form.date) }}
+        {{ form_row(form.tags) }}
+        {{ form_row(form.content) }}
+        <input type="submit" value="Envoyer">
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset("tinymce/tinymce.min.js") }}"></script>
+    {{ parent() }}
+{% endblock %}

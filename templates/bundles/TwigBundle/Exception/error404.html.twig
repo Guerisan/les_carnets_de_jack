@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Page introuvable{% endblock %}
+
+{% block bodyClass %}error_page{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Page introuvable (404)</h1>
+        <p class="subline">La page à laquelle vous souhaitez accéder n'existe pas. <br>
+            Retour à l'<a href="{{ path('index') }}">accueil</a>?</p>
+
+        <div class="container">
+            {% include 'svg/loader.svg' %}
+        </div>
+
+    </div>
+
+{% endblock %}

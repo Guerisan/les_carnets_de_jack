@@ -1,19 +1,99 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Les Carnets de Jack |{% endblock %}</title>
+    {% block description %}
+        <meta name="description" content="Récits d'aventures et partage d'expériences">
+    {% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ asset("css/style.css") }}?v=0.2" as="style">
+    {% block stylesheets %}
+    {% endblock %}
+    <link rel="icon" href="{{ asset('img/pennae.png') }}">
+    <!-- Matomo -->
+    <script>
+        let _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            let u="//analytics.les-carnets-de-jack.com/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            let d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
+</head>
+<body class="{% block bodyClass %}{% endblock %}">
+<div>
+    {% include 'svg/glass_wall.svg' %}
+</div>
+{% include 'svg/loader.svg' %}
+<script>//Gestion du css sans JS
+    let no_js = document.getElementsByClassName("no_js");
+    console.log(no_js);
+    if (no_js) {
+        for (let i = 0; i < no_js.length; i++) {
+            no_js[i].classList.remove("no_js");
+        }
+    }</script>
+{#
+{% if app.request.attributes.get('_route') is not same as ('index') %}
+    <a href="{{ path('index') }}" id="accueil"> {% include 'svg/logo.svg' %}</a>
+{% endif %}
+#}
+<input type="checkbox" name="toggle_menu" id="toggle_menu">
+<label for="toggle_menu" id="menu_wheel">
+</label>
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+<nav id="main_nav">
+    <div class="nav_illustration"></div>
+    <ul>
+        {% block nav %}
+            {% if app.request.attributes.get('_route') is not same as ('index') %}
+                <li><a href="{{ path('index') }}">Accueil</a></li>
+            {% endif %}
+            <li><a href="{{ path('journal_index') }}">Journal de bord</a></li>
+            <li><a href="{{ path('tales_list') }}">Récits Historiques</a></li>
+            {# <li><a href=" {{ path('contribution_index') }} " class="soon_link">Vos récits</a></li> #}
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <li><a href="{{ path('user_cabin', {'slug' : app.user.slug}) }}">Cabine</a></li>
+                <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+            {% else %}
+                <li><a href="{{ path('app_login') }}">Connexion</a></li>
+            {% endif %}
+            <li><a href="{{ path('contact') }}">Contact</a></li>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="{{ path('crew_list') }}">Equipage</a></li>
+            {% endif %}
+
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    </ul>
+    <div class="blacksail"></div>
+</nav>
+<div id="fullscreen_container" class="inactive">
+    <img id="fullscreen_image" src="" alt="">
+</div>
+{% block body %}{% endblock %}
+
+<footer class="base_footer">
+    <div class="container">
+        <ul>
+            <li><a href="{{ path('contact') }}">Contact</a></li>
+            <li><a href="{{ path('legals') }}">Mentions légales</a></li>
+            <li><a href="https://instagram.com/professeur_jack" target="_blank">{% include 'svg/instagram.svg' %}</a></li>
+        </ul>
+    </div>
+</footer>
+
+{% block javascripts %}
+    <script src="{{ asset("js/main.js") }}"></script>
+{% endblock %}
+
+
+</body>
 </html>

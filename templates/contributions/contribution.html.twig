@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} {{ contribution.title }} {% endblock %}
+
+{% block body %}
+    <section>
+        <h1>{{ contribution.title }}</h1>
+        {% if contribution.mainImage is not null %}
+            <img src="{{ asset("uploads/img/contributions/" ~ contribution.mainImage) }}" alt="illustration du récit">
+        {% endif %}
+        <p>{{ contribution.content }}</p>
+    </section>
+
+    {% if contribution.imageGallery1 is not null or contribution.imageGallery2 is not null or contribution.imageGallery3 is not null %}
+    <section class="gallerie">
+        {% if contribution.imageGallery1 is not null %}
+            <img src="{{ asset("uploads/img/contributions/" ~ contribution.imageGallery1) }}" alt="image de gallerie">
+        {% endif %}
+        {% if contribution.imageGallery2 is not null %}
+            <img src="{{ asset("uploads/img/contributions/" ~ contribution.imageGallery2) }}" alt="image de gallerie">
+        {% endif %}
+        {% if contribution.imageGallery3 is not null %}
+            <img src="{{ asset("uploads/img/contributions/" ~ contribution.imageGallery3) }}" alt="image de gallerie">
+        {% endif %}
+    </section>
+    {% endif %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        {% if contribution.status is not same as("published") %}
+            <a href="{{ path('contribution_validation', {'id' : contribution.id}) }}" id="validation">Valider la contribution</a>
+        {% endif %}
+        <a href="{{ path('contribution_suppression', {'id' : contribution.id}) }}" id="suppression">Supprimer la contribution</a>
+
+    {% endif %}
+
+    <section>
+        <p>Commentaires :</p>
+        {% for comment in comments %}
+            <p>{{ comment.author }} : {{ comment.text }}</p>
+        {% endfor %}
+
+        {{ form_start(commentForm) }}
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") or is_granted("IS_AUTHENTICATED_FULLY") %}
+            {{ form_label(commentForm.text, app.user.username) }}
+        {% else %}
+            <a href="{{ path('app_login') }}">S'identifier</a>
+            {{ form_label(commentForm.text, 'Anonyme') }}
+        {% endif %}
+        {{ form_widget(commentForm.text) }}
+
+        <input type="submit" value="Poster">
+        {{ form_end(commentForm) }}
+
+        {% for message in app.session.flashBag.get('blog') %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </section>
+
+
+{% endblock %}

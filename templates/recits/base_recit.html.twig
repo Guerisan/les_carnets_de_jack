@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} {{ recit.title }} {% endblock %}
+
+{% block bodyClass %}recit {{ recit.vue }}{% endblock %}
+{% block body %}
+
+    <section>
+        {% include 'recits/' ~ recit.vue ~ '.html.twig' %}
+    </section>
+
+    {% if sources is not empty %}
+    <section class="sources">
+        <div class="container">
+            <p>Sources : </p>
+            <ul>
+                {% for source in sources %}
+                    <li><a href="{{ source.adress }}" target="_blank">{{ source.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+    <section>
+        {% include 'partial/comment.html.twig' %}
+    </section>
+{% endblock %}

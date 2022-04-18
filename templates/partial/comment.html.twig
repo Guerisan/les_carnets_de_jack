@@ -1,0 +1,27 @@
+<div class="container" id="commentaires">
+    <h2>Commentaires :</h2>
+    {% for comment in comments %}
+        <p><i class="auteur">{{ comment.author }}</i> : {{ comment.text }}</p>
+    {% endfor %}
+
+    {{ form_start(commentForm) }}
+
+    <p class="commenter">Envie de partager vos pensées ?</p>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") or is_granted("IS_AUTHENTICATED_FULLY") %}
+        <p>Pseudo : <span class="auteur">
+                {{ form_label(commentForm.text, app.user.username) }}
+            </span></p>
+
+                {{ form_widget(commentForm.text, {'attr':{'placeholder' : "A vos plumes !"}}) }}
+
+        <input type="submit" value="Poster">
+        {{ form_end(commentForm) }}
+
+        {% for message in app.session.flashBag.get('blog') %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% else %}
+        <span class="auteur">Rejoignez l'équipage pour commenter !</span>
+        <a href="{{ path('app_login') }}">(S'identifier)</a>
+    {% endif %}
+</div>

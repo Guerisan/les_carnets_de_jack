@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Journal{% endblock %}
+
+{% block body %}
+
+
+    <h1>Journal de Bord</h1>
+    {% if category is defined %}
+        <p class="subline">Catégorie : {{ category }}</p>
+    {% else %}
+        <p class="subline">Alors Jack, quelles sont les nouvelles ?</p>
+    {% endif %}
+
+    <section>
+        <div class="container">
+            {% for message in app.session.flashBag.get('journal') %}
+                <p>{{ message }}</p>
+            {% endfor %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="admin_toolbox">
+                    <a class="admin_tool" href="{{ path('new_entry') }}">Nouvelle entrée</a>
+                </div>
+            {% endif %}
+            <ul class="articles_list">
+                {% for entry in entries %}
+                    <li class="index_item">
+                        <a href="{{ path('single_entry', {'slug' : entry.slug}) }}">
+                            <h2 class="index_article_title">{{ entry.title }}</h2>
+                            <p class="date">{{ entry.date|date("d/m/Y") }}</p>
+                        </a>
+                        <div class="image_container">
+                            <img class="index_img" src="
+                         {% if entry.illustration is not null %}
+                            {{ asset('uploads/img/journal/' ~ entry.illustration) }}
+                        {% else %}
+                            {{ asset("img/placeholder_1.jpg") }}
+                        {% endif %}
+                        " alt="">
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+{% endblock %}

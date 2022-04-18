@@ -1,0 +1,207 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} Accueil {% endblock %}
+
+{% block bodyClass %}home{% endblock %}
+{% block body %}
+    <section class="banner container">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <p class="user_welcome_message">Salut <strong><em><a
+                                href="{{ path('user_cabin', {'slug' : app.user.slug}) }}">{{ app.user.username }}</a></em></strong>
+                ! Fait comme chez toi.</p>
+        {% endif %}
+        <h1>Les Carnets de Jack
+            {% include 'svg/logo.svg' %}
+        </h1>
+        <p class="subline">Les aventures prennent sens une fois racontées.</p>
+        <div class="go_down">
+            <a href="#introduction" class="anchor">
+                {% include 'svg/go_down.svg' %}
+            </a>
+        </div>
+    </section>
+
+    <div class="post_banner_container" id="introduction">
+        <div class=" sep_frag fragment_mini"></div>
+        <div class="frag_wrapper_1">
+            <div class="sep_frag fragment_1"></div>
+        </div>
+        <div class="post_banner"></div>
+        <div class="frag_wrapper_2">
+            <div class="sep_frag fragment_2"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <p class="accroche trigger triggered"><strong>Bienvenue à bord !</strong> <br> <br>
+
+            <span>Je suis <em>Jack</em>, explorateur curieux, et vagabond enthousiaste.</span> <br>
+
+            Ici, tu trouveras je l'espère, toute l'inspiration dont tu as besoin
+            au travers de recits de voyages passionnants ou insolites,
+            vécus par des aventurières et aventuriers<br> de tous horizons. <br>
+            Car nous sommes toujours intéressés par <em>une bonne histoire !</em>
+        </p>
+    </div>
+
+    {% if last_entry is not empty %}
+    <section class="last_article">
+        <div class="container">
+            <h2 class="trigger triggered">Dernier article</h2>
+            <a href="{{ path('single_entry', {'slug' : last_entry.slug}) }}" class="trigger triggered wrapper">
+                <div class="last_illustration">
+
+                    <img src="{% if last_entry.illustration is not null %}
+                            {{ asset('uploads/img/journal/' ~ last_entry.illustration) }}
+                        {% else %}
+                            {{ asset("img/placeholder_1.jpg") }}
+                        {% endif %}" alt="">
+                    <h3 class="index_article_title">{{ last_entry.title }}</h3>
+
+                </div>
+                <div class="content">
+                    <p class="date">{{ last_entry.date|date("d/m/Y") }}</p>
+                    <p class="sample">{{ last_entry.content|length > 300 ? last_entry.content|striptags|slice(0, 300)|raw : last_entry.content|striptags|raw }} [...]</p>
+                    <p class="link">Lire la suite...</p>
+                </div>
+            </a>
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="vers_jdb">
+        <div class="container">
+
+            <h2 class="trigger triggered">Journal de Bord</h2>
+
+            <div class="content">
+
+                <p class="trigger triggered jdb_text_1">
+                    Pour quelles raisons avons nous envie de partir explorer le monde ? <br>
+                    Changer sa vision des choses ? Sortir de sa zone de confort ? <br>
+                    Rechercher une sensation particulière, celle-là même qu'on ne saurait décrire, mais
+                    que l'on reconnaît immédiatement lorsqu'elle se présente? <br>
+                    S'il paraît qu'il existe autant de raisons différentes que de voyageurs, pour moi ce sont au moins
+                    toutes ces raisons à la fois.
+                    <br>
+                    Et puis, j'aime que l'on me raconte des histoires. Et j'aime en raconter. <br>
+                    Alors, j'ai fini par me décider à partir à la recherche d'histoire à raconter.
+                    <br>
+                    Et aujourd'hui, <a href="{{ path('journal_index') }}">l'aventure commence.</a>
+                </p>
+
+                <!--TODO:: afficher le dernier article -->
+
+                <div class="illustration illustration_jdb">
+                    <a href="{{ path('journal_index') }}">
+                        <div class="fragment fragment_1 trigger triggered lazy"></div>
+                        <img src="" data-src="{{ asset("img/backpack.jpg") }}" alt="journal de bord"
+                             class="trigger triggered lazy">
+                        <div class="fragment fragment_0 trigger triggered lazy"></div>
+                        <div class="fragment fragment_2 trigger triggered lazy"></div>
+                    </a>
+                    <p class="trigger triggered">
+                        Dans ce journal de bord, vous pourrez suivre
+                        le récit de mes propres (més)aventures.
+                        Et s'il n'y a rien de nouveau et palpitant à raconter,
+                        et bien je vous partagerai mes idées et réflexions. <br>
+                        Si cela ne parvient pas à réveiller ou entretenir une
+                        petite flamme en vous, vous pouvez vous venger sur les
+                        autres sections du site : les aventures vécues par d'autres
+                        voyageurs, à travers toutes les époques,
+                        ou pourquoi pas la vôtre ?
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="vers_recits">
+        <div class="container">
+
+            <div class="content">
+                <div class="illustration illustration_recits">
+                    <h2>Les récits historiques</h2>
+                    <a href="{{ path('tales_list') }}">
+                        <div class="fragment fragment_1 trigger triggered lazy"></div>
+                        <img src="" data-src="{{ asset("img/recit_illu.jpg") }}" alt="Le HMS Terror pris dans la glace"
+                             class="trigger triggered lazy">
+                        <div class="fragment fragment_0 trigger triggered lazy"></div>
+                        <div class="fragment fragment_2 trigger triggered lazy"></div>
+                    </a>
+                </div>
+
+                <p>
+                    Le voyage et l'exploration ne datent pas d'hier.
+                    Et à travers les âges certains aventuriers ont vécu des
+                    histoires à couper le souffle. En bien comme en mal.
+                    <br><br>
+                    Dans cette section, on trouve quelques dossiers sourcés et illustrés,
+                    parfois accompagnés d'une vidéo narrative, pour en
+                    apprendre davantage sur <a href="{{ path('tales_list') }}">ces aventuriers qui ont
+                        marqué l'Histoire </a>.
+                    <br><br>
+                    Autant dire qu'ils sont une des raisons qui vous donne
+                    envie de prendre la route (ou au contraire parfois, de rester bien au chaud chez soi).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!--
+<h2 class="soon">Bientôt...</h2>
+
+    <section class="vers_contributions soon">
+        <div class="container">
+            <h2>Vos récits</h2>
+
+            <div class="content">
+                <p>
+                    Nombreux sont ceux qui ont quelque chose à raconter.
+                    Cette section est dédiée aux histoires que d'autres ont pu vivre.
+                    Partagez leur expérience, écoutez leurs conseils, et tirez-en quelque chose pour vos propres
+                    aventures. <br><br>
+                    Et si vous-même souhaitez souhaitez nous faire part d'accomplissements, de mésaventures,
+                    ou de réflexions, ne vous privez-pas. Ce site est là pour ça !
+                    C'est <a href="{{ path('contribution_index') }}" class="soon_link">par ici !</a>. <br>
+                    Nous avons hâte de vous lire !
+                </p>
+
+                <a href="{# {{ path('contribution_index') }} #}" class="illustration illustration_contributions soon_link" >
+                    <div class="fragment fragment_1 trigger triggered lazy"></div>
+                    <div class="fragment fragment_2 trigger triggered lazy"></div>
+                    <img src="" data-src="{{ asset("img/contributions.jpg") }}" alt="Deux aventurières devant un paysage magnifique"
+                         class="trigger triggered lazy">
+                    <div class="fragment fragment_3 trigger triggered lazy"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="vers_utilitaires soon">
+        <div class="container">
+            <h2>Utilitaires</h2>
+            <div class="content">
+                <a href="" class="illustration illustration_utilitaires soon_link">
+                    <div class="fragment fragment_1 trigger triggered"></div>
+                    <img src="" alt="Un smartphone, des herbes, des noeuds, un kit de couture" class="trigger triggered">
+                    <div class="fragment fragment_2 trigger triggered"></div>
+                </a>
+
+
+                <p>
+                    Pour finir : astuces, techniques, connaissances, une section
+                    plus pragmatique où l'on partage le savoir-faire
+                    nécessaire à meilleure expérience de voyage possible. <br>
+                    De l'équipement indispensable, aux thés sauvages les
+                    plus délicieux.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    -->
+
+{% endblock %}

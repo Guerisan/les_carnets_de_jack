@@ -1,0 +1,15 @@
+.error_page{
+ .container{
+   padding: 1em;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   min-height: 58vh;
+   box-sizing: border-box;
+   justify-content: center;
+
+   #loader{
+     position: initial;
+   }
+ }
+}

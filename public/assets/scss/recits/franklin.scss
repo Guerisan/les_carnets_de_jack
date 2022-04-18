@@ -1,0 +1,209 @@
+.franklin {
+
+  .introduction {
+    text-align: center;
+    margin: 0 auto 1rem;
+
+    em {
+      font-size: 1.2rem;
+      margin-bottom: 1em;
+      display: inline-block;
+    }
+  }
+
+  .intro_illustration {
+    margin: 0 auto 4rem;
+  }
+
+  figure {
+    margin-bottom: 2rem;
+  }
+
+  .contexte {
+    display: grid;
+    grid-template-columns: minmax(20rem, 1fr);
+    grid-auto-flow: dense;
+    grid-gap: 1rem;
+    margin: 0 auto 5rem;
+
+    .monarques {
+      display: flex;
+    }
+
+    figure {
+      width: 100%;
+      margin: 0 .5rem;
+      position: relative;
+    }
+
+    p {
+      justify-self: center;
+    }
+  }
+
+  .victoria {
+    justify-self: right;
+  }
+
+
+  .northwest, .camp {
+    display: grid;
+    grid-gap: 2rem;
+    padding-bottom: 4rem;
+  }
+
+  .northwest_back_1 {
+    width: 100%;
+    min-height: 25rem;
+    background: url("../img/recit_franklin/northwest_1.jpg") no-repeat center;
+    background-size: cover;
+    filter: grayscale(0);
+    transition: 3s cubic-bezier(0, .45, 1, .55);
+
+    .northwest_back_2 {
+      background: url("../img/recit_franklin/northwest_2.jpg") no-repeat center;
+      background-size: cover;
+      transition: 3s cubic-bezier(0, .45, 1, .55);
+      width: 100%;
+      min-height: 25rem;
+      clip-path: polygon(0 0, 100% 0, 0 0, 0% 100%);
+    }
+
+    &:hover {
+      filter: grayscale(.8);
+
+      .northwest_back_2 {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+      }
+    }
+  }
+
+  .officiers, .wrecks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-gap: 2rem;
+    margin-bottom: 4rem;
+
+    figure {
+      justify-self: center;
+    }
+
+    img, figcaption {
+      min-width: 20rem;
+      width: 100%;
+      max-width: 25rem;
+
+    }
+  }
+
+  .ships, .king_william_note {
+    margin-bottom: 4rem;
+
+    p {
+      max-width: 80rem;
+    }
+
+    figure {
+      max-width: 50rem;
+      margin: 0 auto 2rem;
+    }
+  }
+
+  .camp, .note_first_part, .hellship {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .corpse_1 {
+    max-width: 40rem;
+    min-height: 25rem;
+    background: url("../img/recit_franklin/corpse_1.jpg") no-repeat left center;
+    background-size: cover;
+
+    .corpse_2 {
+      background: url("../img/recit_franklin/corpse_2.jpg") no-repeat left center;
+      background-size: cover;
+      transition: 1.5s ease-in-out;
+      width: 100%;
+      height: 100%;
+      min-height: 25rem;
+      opacity: 0;
+    }
+
+    &:hover {
+      .corpse_2 {
+        opacity: 1;
+      }
+    }
+  }
+
+  .showtime {
+    text-align: center;
+    max-width: 63rem;
+    margin-bottom: 2rem;
+
+    span {
+      display: inline-block;
+      padding-top: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      border-bottom: 1px solid $darkInk;
+    }
+  }
+
+  .note_first_part {
+    p {
+      max-width: 80rem;
+    }
+  }
+
+  #the_note{
+    width: 100%;
+    height: 100%;
+  }
+
+  .king_william_map_container{
+    margin-bottom: 2rem;
+  }
+
+  .jr_note_container{
+    max-width: 30rem;
+    margin: 0 auto 2rem;
+  }
+
+  .wrecks{
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    img{
+      max-width: 100%;
+    }
+    figcaption{
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .franklin {
+    .intro_illustration {
+      margin-bottom: 8rem;
+    }
+
+    .ships {
+      margin-bottom: 6rem;
+    }
+
+    .showtime {
+      margin-bottom: 4rem;
+    }
+
+    .img_magnifier_container{
+      grid-area: 1 / 1 ;
+    }
+
+    .contexte, .northwest, .camp, .note_first_part, .hellship {
+      grid-template-columns: repeat(2, minmax(20rem, 1fr));
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} {{ entry.title }}{% endblock %}
+
+{% block bodyClass %}entry{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <a href="{{ path('journal_index') }}" class="subline">Journal de bord</a>
+        <h1>{{ entry.title }}</h1>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="admin_tool" href="{{ path('edit_entry', {'id' : entry.id}) }}">Modifier l'entrée</a>
+            <br>
+            <a class="admin_tool" href="{{ path('del_entry', {'id' : entry.id}) }}" onclick="alert('Confirmer la suppression ?')">Supprimer l'entrée</a>
+        {% endif %}
+        <div class="tags">
+            <p>Tags :</p>
+            <ul>
+                {% if entry.tags[0] is not empty %}
+                    {% for tag in entry.tags %}
+                        <li><a href="{{ path("entry_category", {"tag": tag}) }}">{{tag}}</a></li>
+                    {% endfor %}
+                {% else %}
+                    <li>Aucun</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="image_container container">
+        <img class="index_img expandable_picture" src="
+                         {% if entry.illustration is not null %}
+                            {{ asset('uploads/img/journal/' ~ entry.illustration) }}
+                        {% else %}
+                            {{ asset("img/placeholder_1.jpg") }}
+                        {% endif %}
+                        " alt="">
+    </div>
+    <section>
+        <div class="container">
+            <article>
+                {{ entry.content|raw }}
+            </article>
+        </div>
+    </section>
+    <section>
+        {% include 'partial/comment.html.twig' %}
+    </section>
+
+
+{% endblock %}

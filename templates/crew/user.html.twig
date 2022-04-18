@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cabine de {{ app.user.username }} {% endblock %}
+
+{% block bodyClass %}cabin{% endblock %}
+
+{% block body %}
+
+    <h1>Cabine de&nbsp;: <span class="username">&nbsp;{{ user.username }}</span></h1>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="admin_toolbox">
+            <a class="admin_tool" href="{{ path('crew_list') }}">Equipage !</a>
+        </div>
+    {% endif %}
+
+    <div class="container">
+        <div class="user_grid">
+
+            <div>
+            <img class="user_img shadowed expandable_picture"  src="
+                         {% if user.profilePic is not null %}
+                            {{ asset('uploads/img/user/' ~ user.profilePic) }}
+                        {% else %}
+                            {{ asset("img/placeholder_1.jpg") }}
+                        {% endif %}
+                        " alt="">
+                <ul class="infos textNimg toolbox">
+                    <li><a href="mailto:{{ user.email }}">{{ user.email }}</a></li>
+                </ul>
+            </div>
+            <p class="user_desc">{{ user.presentation }}</p>
+        </div>
+
+        <ul class="cabin-tools">
+            {% if is_granted('ROLE_ADMIN') or app.user.id is same as(user.id) %}
+                <li><a href="{{ path('user_edit', {'id': user.id}) }}">Modifier le profil</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Équipage{% endblock %}
+
+{% block bodyClass %}crew{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>L'équipage !</h1>
+        <ul>
+            {% for member in crew %}
+                <li><a href="{{ path('user_cabin', {'slug' : member.slug}) }}">{{ member.username }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

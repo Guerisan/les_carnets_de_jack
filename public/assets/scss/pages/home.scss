@@ -1,0 +1,571 @@
+//Homepage/////////////////////////////////////////////////////////////////////////////
+
+.home section.banner {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.user_welcome_message {
+  position: absolute;
+  padding: 2rem;
+  left: 0;
+  top: 0;
+  font-family: "CormorantGaramond", Montserrat, sans-serif;
+}
+
+.accueil.accueil_banner {
+  position: relative;
+  left: auto;
+  right: auto;
+  overflow: visible;
+  width: 1em;
+  height: 71px;
+  margin-bottom: .3em;
+  margin-left: .3em;
+  transform: translateY(1rem);
+
+}
+
+.go_down, {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 1rem;
+
+  svg {
+    height: 3rem;
+    width: 1.5rem;
+    overflow: visible;
+    animation: go_down 4s linear infinite;
+
+    * {
+      transition: .6s ease-in-out;
+      animation: shiny 3s ease-in-out infinite;
+    }
+  }
+
+  a {
+    display: inline-block;
+
+    &:hover {
+      .gd-2 {
+        transform: translateY(-6rem);
+      }
+
+      .gd-1 {
+        transform: translateY(10rem);
+      }
+
+      .gd-3 {
+        transform: translate3d(10rem, 5rem, 0);
+      }
+    }
+  }
+}
+
+.accroche {
+  font-size: 1.2em;
+  text-align: center;
+  margin: 0 auto 0;
+  padding-bottom: 12em;
+  max-width: 31em;
+  background: url("../img/inkDrop_2.png") no-repeat top right;
+  background-size: 4em;
+  position: relative;
+span{
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+  strong {
+    font-size: 1.8em;
+    font-weight: 600;
+    font-family: 'CormorantGaramond', Montserrat, sans-serif;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    right: -25%;
+    min-width: 20em;
+    min-height: 20em;
+    opacity: .4;
+    background: url("../img/compass_ink.png") no-repeat center 6rem;
+    background-size: contain;
+    transition: 1.2s ease-out;
+  }
+
+}
+
+.accroche.triggered::after {
+  background: url("../img/compass_ink.png") no-repeat center 0rem;
+  background-size: contain;
+}
+
+.fragment, .sep_frag {
+  opacity: .8;
+}
+
+.fragment{
+  display: none;
+}
+
+.post_banner_container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 5em);
+
+  .post_banner, .fragment_1, .fragment_2, .fragment_mini {
+    width: 100%;
+    background: url("../img/separation_1.jpg") no-repeat center scroll;
+    background-size: cover;
+  }
+
+  .post_banner {
+    height: 18em;
+    grid-column: 1 / 4;
+    grid-row: 2 / 3
+  }
+
+  .fragment_mini {
+    height: 1.5em;
+    grid-column: 1/ 2;
+    grid-row: 1 / 2;
+    width: 30%;
+    justify-self: end;
+    align-self: center;
+    background-position: top left;
+    box-shadow: 21px 31px 43px -35px rgba(0, 0, 0, 0.75);
+  }
+
+  .frag_wrapper_1, .frag_wrapper_2 {
+    display: flex;
+  }
+
+  .frag_wrapper_1 {
+    grid-column: 3/ 4;
+    grid-row: 1 / 2;
+    //filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+  }
+
+  .frag_wrapper_2 {
+    grid-column: 1/ 2;
+    grid-row: 5 /6;
+    justify-content: right;
+    //filter: drop-shadow(-1px -6px 3px rgba(50, 50, 0, 0.5));
+  }
+
+  .fragment_1 {
+    height: 3em;
+    width: 80%;
+    justify-self: start;
+    align-self: flex-end;
+    background-position: top right;
+    margin-bottom: -1em;
+  }
+
+  .fragment_2 {
+    height: 4em;
+
+    width: 80%;
+    justify-self: end;
+    align-self: end;
+    margin-top: -1.5em;
+    background-position: bottom left;
+  }
+}
+
+.last_article{
+  a{
+    text-decoration: none;
+    color: $darkInk;
+  }
+  .wrapper{
+    display: grid;
+    grid-gap: 4rem;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+  .container h2{
+    margin-bottom: 2rem;
+  }
+  .container{
+    max-width: 64rem;
+  }
+  .last_illustration{
+    max-height: 20rem;
+    display: grid;
+    img{
+      width: 100%;
+      max-height: 20rem;
+      margin-bottom: 0;
+      box-shadow: 21px 31px 43px -35px rgba(0,0,0,.75);
+    }
+    img, h3{
+      grid-row: 1;
+      grid-column: 1;
+      place-self: center;
+    }
+  }
+  .date{
+    font-size: 1.5rem;
+    font-family: "CormorantGaramond", Montserrat, sans-serif;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .link{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-family: "CormorantGaramond", Montserrat, sans-serif;
+  }
+  .sample{
+    white-space: pre-line;
+  }
+}
+
+.home {
+  .container {
+    overflow: hidden;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin-top: 0;
+  }
+
+  h2 {
+    margin-bottom: 3em;
+  }
+
+  section {
+    margin-bottom: 6em;
+
+    img {
+      display: block;
+      height: 35em;
+      box-shadow: 21px 31px 43px -35px rgba(0, 0, 0, 0.75);
+      margin: 0 auto 2em;
+    }
+
+    p {
+      max-width: 32em;
+    }
+  }
+
+  .illustration {
+    position: relative;
+    max-width: 32em;
+
+    img {
+      position: relative;
+
+      &::before {
+        content: "";
+
+      }
+
+    }
+  }
+
+}
+
+.vers_jdb {
+
+  .content {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr)); //TODO : responsive sous 30em
+    grid-gap: 4em;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .jdb_text_1 {
+    justify-self: left;
+  }
+
+  .illustration_jdb {
+    display: flex;
+    flex-direction: column;
+    justify-self: left;
+
+    p {
+      max-width: 32rem;
+    }
+  }
+
+  .fragment {
+    height: 3em;
+    background-image: url("../img/backpack.jpg");
+  }
+
+  .fragment.lazy {
+    background-image: none;
+  }
+
+  .fragment_0 {
+    width: 12em;
+    height: 2.5rem;
+    position: absolute;
+    top: -2%;
+    left: -10%;
+    background-position-x: 17%;
+    background-position-y: 20%;
+  }
+
+  .fragment_1 {
+    width: 20em;
+    position: absolute;
+    top: 59%;
+    left: -24%;
+    background-position-x: 31%;
+    background-position-y: 80%;
+    height: 4rem;
+  }
+
+  .fragment_2 {
+    width: 12em;
+    position: absolute;
+    top: 50%;
+    right: -15%;
+    background-position-x: 90%;
+    background-position-y: 70%;
+  }
+
+}
+
+.vers_recits {
+  h2 {
+    text-align: center;
+  }
+
+  .content {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr)); //TODO : responsive sous 30em
+    grid-gap: 4em;
+  }
+
+  .illustration_recits {
+    justify-self: left; //TODO:responsive
+  }
+
+  .fragment {
+    height: 2em;
+    background-image: url("../img/recit_illu.jpg");
+  }
+
+  .fragment.lazy {
+    background-image: none;
+  }
+
+  .fragment_0 {
+    width: 17rem;
+    position: absolute;
+    z-index: 1;
+    top: 14%;
+    left: -14%;
+    background-position-x: 0;
+    background-position-y: 0;
+    height: 4rem;
+  }
+
+  .fragment_1 {
+    width: 14rem;
+    position: absolute;
+    z-index: 1;
+    top: 27%;
+    right: -23%;
+    background-position-x: 10%;
+    background-position-y: 10%;
+    height: 3.5rem;
+  }
+
+  .fragment_2 {
+    width: 12em;
+    position: absolute;
+    height: 3em;
+    top: 70%;
+    left: -10%;
+    background-position-y: 95%;
+  }
+
+  p {
+    justify-self: start; //TODO: responsive : center
+    align-self: end;
+    margin-bottom: 5em;
+  }
+}
+
+
+.vers_contributions {
+  h2 {
+    text-align: center;
+  }
+
+  .content {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr)); //TODO : responsive sous 30em
+    grid-gap: 4em;
+  }
+
+  .fragment {
+    height: 2em;
+    background-image: url("../img/contributions.jpg");
+    position: absolute;
+  }
+
+  .fragment.lazy {
+    background-image: none;
+  }
+
+  .fragment_1 {
+    width: 8em;
+    left: -12%;
+    top: 10%;
+    background-position-x: 10%;
+    background-position-y: 10%;
+  }
+
+  .fragment_2 {
+    width: 13em;
+    top: -5%;
+    left: 20%;
+    height: 3em;
+    background-position-x: 50%;
+    background-position-y: 5%;
+  }
+
+  .fragment_3 {
+    width: 11em;
+    right: -33%;
+    top: 8%;
+    background-position-x: 90%;
+    background-position-y: 20%;
+  }
+
+  p {
+    align-self: center;
+    justify-self: left;
+  }
+}
+
+.vers_utilitaires {
+  h2 {
+    text-align: center;
+  }
+
+  .content {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr)); //TODO : responsive sous 30em
+    grid-gap: 4em;
+  }
+
+  .fragment {
+    height: 2em;
+    background-image: url("../img/contributions.jpg");
+    position: absolute;
+  }
+
+  .fragment.lazy {
+    background-image: none;
+  }
+
+  .fragment_1 {
+    width: 8em;
+    left: -14%;
+    top: 25%;
+    background-position-x: 20%;
+    background-position-y: 20%;
+  }
+
+  .fragment_2 {
+    width: 13em;
+    bottom: 8%;
+    right: -10%;
+    height: 3em;
+    background-position-x: 90%;
+    background-position-y: 90%;
+  }
+
+  .illustration_utilitaires {
+    justify-self: left;
+  }
+
+  p {
+    justify-self: center;
+  }
+}
+
+h2.soon {
+  text-align: center;
+  font-size: 2rem;
+}
+
+section.soon {
+  opacity: .5;
+}
+
+@media screen and (min-width: 768px) {
+  .fragment{
+    display: initial;
+  }
+  .home {
+    h1 {
+      padding-left: 1em;
+      font-size: 3em;
+    }
+
+    .accueil.accueil_banner {
+      height: 112px;
+    }
+
+    .post_banner_container {
+      .post_banner, .fragment_1, .fragment_2, .fragment_mini {
+        background-attachment: fixed;
+      }
+    }
+
+    section {
+      img {
+        margin: 0 auto 5em;
+      }
+    }
+  }
+
+  .vers_jdb {
+    .jdb_text_1 {
+      margin-top: 10%;
+      justify-self: right;
+    }
+  }
+
+  .vers_recits {
+    .illustration_recits {
+      justify-self: right;
+    }
+  }
+
+  .vers_contributions {
+    p {
+      justify-self: right;
+    }
+  }
+
+  .vers_utilitaires {
+    .illustration_utilitaires {
+      justify-self: right;
+    }
+
+    p {
+      justify-self: left;
+      margin-top: 15%;
+    }
+  }
+
+}

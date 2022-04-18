@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]
+<filesMatch ".(ico|jpg|jpeg|png|gif|woff2|ttf)$">
+ Header set Cache-Control "max-age=2592000, public"
+</filesMatch>
+<filesMatch ".(css|js)$">
+ Header set Cache-Control "max-age=86400, public"
+</filesMatch>*)$ index.php [QSA,L]

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block bodyClass %}user_form{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Modification du profil</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+        {% if user.profilePic is not null %}
+            <img class="user_img shadowed expandable_picture"  src="
+                            {{ asset('uploads/img/user/' ~ user.profilePic) }}
+                        " alt="">
+        {% else %}
+            <p>[Aucune image de profil]</p>
+        {% endif %}
+        {{ form_row(form.profile_pic) }}
+        {{ form_row(form.presentation) }}
+
+        <input type="submit" value="Enregistrer les modifications">
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

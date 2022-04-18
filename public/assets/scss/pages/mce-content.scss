@@ -1,0 +1,84 @@
+//sass --watch public/assets/scss/pages/mce-content.scss:public/assets/tinymce/skins/ui/oxide/content.min.css --style=compressed
+
+//Le style du contenu de l'éditeur tinymce
+
+@import "../variables";
+@font-face {
+  font-family: Montserrat;
+  src: url(../../../../fonts/Montserrat/Montserrat-SemiBold.woff2),
+  url(../fonts/Montserrat/Montserrat-SemiBold.ttf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url(../../../../fonts/Montserrat/Montserrat-Regular.woff2),
+  url(../../../../fonts/Montserrat/Montserrat-Regular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url(../../../../fonts/Montserrat/Montserrat-Light.woff2),
+  url(../../../../fonts/Montserrat/Montserrat-Light.ttf);
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: CormorantGaramond;
+  src: url("../../../../fonts/CormorantGaramond/CormorantGaramond-Bold.woff2"),
+  url("../../../../fonts/CormorantGaramond/CormorantGaramond-Bold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: CormorantGaramond;
+  src: url("../../../../fonts/CormorantGaramond/CormorantGaramond-SemiBold.woff2"),
+  url("../../../../fonts/CormorantGaramond/CormorantGaramond-SemiBold.ttf");
+  font-weight: 600;
+}
+body {
+  max-width: 52rem;
+  margin-top: 2rem;
+  box-shadow: 1px 1px 11px 0 rgba(50, 50, 50, 0.1);
+  font-family: Montserrat,sans-serif;
+  h2, h3 {
+    font-size: 1.8em;
+    font-weight: 600;
+    line-height: 1.5;
+    font-family: "CormorantGaramond", Montserrat, sans-serif;
+  }
+
+  p {
+    margin-bottom: 1rem !important;
+    font-size: 1.1rem;
+    color: #37435a;
+    line-height: 1.8;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    min-height: 20rem;
+    margin: auto;
+  }
+  div{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-gap: 2rem;
+  }
+
+
+  em {
+    display: inline-block;
+    font-size: 1.2rem;
+    color: $darkPurple;
+    padding: 1rem;
+  }
+
+  a {
+    color: $darkRed;
+    font-family: Montserrat,sans-serif;
+  }
+}
